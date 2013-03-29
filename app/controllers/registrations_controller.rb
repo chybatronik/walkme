@@ -19,6 +19,23 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def new
+    @plan = params[:plan]
+    if @plan && ENV["ROLES"].include?(@plan) && @plan != "admin"
+      super
+    else
+      redirect_to root_path, :notice => 'Please select a subscription plan below.'
+    end
+  end
+
+  private
+  def build_resource(*args)
+    super
+    if params[:plan]
+      resource.add_role(params[:plan])
+    end
+  end
+  
   protected
 
   def after_inactive_sign_up_path_for(resource)
