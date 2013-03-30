@@ -16,7 +16,9 @@
 
 <h3>Subscription Plan</h3>
 <p>
-  <%= @user.roles.first.name.titleize %>
+  <%unless @user.role_ids.blank?%>
+    <%= @user.roles.first.name.titleize %>
+  <%end%>
   <a data-toggle="modal" href="#plan-options" class="btn btn-mini" type="button">Change plan</a>
 </p>
 

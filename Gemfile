@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.13.rc1'
-gem 'sqlite3'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -8,6 +8,15 @@ group :assets do
   gem "therubyracer"
   gem "execjs"
 end
+
+group :development do
+	gem 'sqlite3'
+end
+# Rails 3.1 can use the latest mysql2 gem.
+group :production do
+	gem 'mysql2'
+end
+
 gem 'jquery-rails'
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test
