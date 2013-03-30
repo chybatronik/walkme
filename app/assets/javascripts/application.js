@@ -15,6 +15,8 @@
 //= require bootstrap
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
+//= require jquery.readyselector
+//= require jquery.externalscript
 //= require_tree .
 $('document').ready(function() {
   
