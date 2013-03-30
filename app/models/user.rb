@@ -144,5 +144,9 @@ class User < ActiveRecord::Base
       Rails.logger.info("MAILCHIMP UNSUBSCRIBE: result #{result.inspect} for #{self.email}")
     end
   end
-
+  
+  def expire
+    UserMailer.expire_email(self).deliver
+    destroy
+  end
 end
