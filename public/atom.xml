@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[WalkMe]]></title>
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2013-04-03T00:27:15+04:00</updated>
+  <id>http://yoursite.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How does WalkMe work?]]></title>
+    <link href="http://yoursite.com/blog/2013/04/03/how-does-walkme-work/"/>
+    <updated>2013-04-03T00:20:00+04:00</updated>
+    <id>http://yoursite.com/blog/2013/04/03/how-does-walkme-work</id>
+    <content type="html"><![CDATA[<p>WalkMe Inc. allows you to easily add interactive on-screen WalkMe™ guidance sequences to your website or HTML software program. Creating and adding a customizable WalkMe™ sequence is remarkably easy and doesn’t require any technical expertise. Our advanced development platform – available as a web browser plug-in – gives you full control over the content, design, placement and functionality of each step of your on-screen guides.</p>
+
+<p>Publishing a WalkMe™ to your target application couldn’t be simpler: you just need to insert a single line of code to your host server (similar to the process for including Google Analytics)…that’s it. Once you’ve added your WalkMe™ – which appears as step-by-step balloon hints on top of your screen content – users can view it without needing to download or install any software.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What is a WalkMe?]]></title>
+    <link href="http://yoursite.com/blog/2013/04/03/what-is-a-walkme/"/>
+    <updated>2013-04-03T00:19:00+04:00</updated>
+    <id>http://yoursite.com/blog/2013/04/03/what-is-a-walkme</id>
+    <content type="html"><![CDATA[<p>Today’s businesses and software developers are consistently challenged by the exponential growth of costs spent on customer support, training, and improvement of overall customer and employee online experience. For example, U.S. firms spent about $156 billion just on employee learning in 2011.</p>
+
+<p>WalkMe Inc.’s solution answers that challenge with the first-of-a-kind technology that enables website owners and software developers create interactive on-screen WalkMe™ guidance sequences, which help users quickly and easily complete even the most complex tasks. Thanks to a WalkMe™-simplified user experience, businesses save time and money by cutting training and customer support costs, and earn more money due to an increased conversion rate.</p>
+]]></content>
+  </entry>
+  
+</feed>
