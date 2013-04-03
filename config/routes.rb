@@ -11,7 +11,8 @@ RailsPrelaunchSignup::Application.routes.draw do
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
     put 'update_card', :to => 'registrations#update_card'
-    root :to => "devise/registrations#new"
+    #root :to => "devise/registrations#new"
+    match '/request' =>"devise/registrations#new"
     match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
   end
   devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "confirmations" }

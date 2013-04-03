@@ -63,13 +63,30 @@
       <a class="brand" href="/">WalkMe</a>
 
       <div class="nav-collapse">
-        <ul class="nav">
-  <li><a href="/demo">Request a Demo</a></li>
+          <div id="request-invite" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="request-invite" aria-hidden="true">
+    <form accept-charset="UTF-8" action="/users" class="simple_form form-horizontal" id="new_user" method="post" novalidate="novalidate">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">&#215;</a>
+        <h3>Request Invitation</h3>
+      </div>
+      <div class="modal-body">
+        
+        <div class="control-group email optional user_email"><label class="email optional control-label" for="user_email">Email</label><div class="controls"><input class="string email optional" id="user_email" name="user[email]" placeholder="user@example.com" size="50" type="email" value="" /></div></div>
+      </div>
+      <div class="modal-footer">
+        <input class="btn btn-primary" id="invitation_button" name="commit" type="submit" value="Request Invitation" />
+        <a class="btn" data-dismiss="modal" href="#">Close</a>
+      </div>
+    </form>
+  </div>
+
+ <ul class="nav">
+  <li><a href="#request-invite" data-toggle="modal" role="button">Request a Demo</a></li>
   <li><a href="/features">Features</a></li>
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/about">About Us</a></li>
-  <li><a href="/login">Login</a></li>
+  <li><a href="/users/sign_in">Login</a></li>
 </ul>
 
 
