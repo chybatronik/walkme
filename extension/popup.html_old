@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.min.css"></link>
+    
+    <title>Getting Started Extension's Popup</title>
+
+    <div class="well">
+      <h1>asdSDASDASDAsd</h1>
+    </div>
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+
+    <script src="lib/jquery-1.9.1.min.js"></script>
+
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/underscore-min.js"></script>
+    <script src="lib/backbone-min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+  </body>
+</html>
+
