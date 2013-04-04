@@ -7,7 +7,36 @@
   </head>
   <body>
     <div class='well'>
-      <h1>AKLSdjlakjsd</h1>
+      <form>
+        <div class='control-group email optional user_email'>
+          <label class='email optional control-label'>
+            Email
+          </label>
+          <div class='controls'>
+            <input class='string email optional' name='user[email]' size='50' type='email' value=''>
+          </div>
+        </div>
+        <div class='control-group password optional user_password'>
+          <label class='password optional control-label'>
+            Password
+          </label>
+          <div class='controls'>
+            <input class='password optional' id='user_password' name='user[password]' size='50' type='password'>
+          </div>
+        </div>
+        <div class='control-group boolean optional user_remember_me'>
+          <label class='boolean optional control-label'>
+            Remember me
+          </label>
+          <div class='controls'>
+            <input name='user[remember_me]' type='hidden' value='0'>
+            <label class='checkbox'>
+              <input class='boolean optional' name='user[remember_me]' type='checkbox' value='1'>
+            </label>
+          </div>
+        </div>
+        <input class='btn btn-primary' name='commit' type='submit' value='Sign in'>
+      </form>
     </div>
   </body>
   <script src='lib/jquery-1.9.1.min.js'></script>

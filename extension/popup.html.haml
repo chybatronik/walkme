@@ -6,7 +6,25 @@
 		%title "Walkme"
 	%body
 		.well
-			%h1 AKLSdjlakjsd
+			%form
+				.control-group.email.optional.user_email
+					%label.email.optional.control-label
+						Email
+					.controls
+						%input.string.email.optional{:name=>"user[email]", :size=>"50", :type=>"email", :value=>""}
+				.control-group.password.optional.user_password
+					%label.password.optional.control-label
+						Password
+					.controls
+						%input.password.optional{:id=>"user_password", :name=>"user[password]", :size=>"50", :type=>"password"}
+				.control-group.boolean.optional.user_remember_me
+					%label.boolean.optional.control-label
+						Remember me
+					.controls
+						%input{:name=>"user[remember_me]", :type=>"hidden", :value=>"0"}
+						%label.checkbox
+							%input.boolean.optional{:name=>"user[remember_me]", :type=>"checkbox", :value=>"1"}
+				%input.btn.btn-primary{:name=>"commit", :type=>"submit", :value=>"Sign in"}
 
 	%script(src="lib/jquery-1.9.1.min.js")
 	%script(src="lib/bootstrap/js/bootstrap.min.js")
