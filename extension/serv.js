@@ -3,4 +3,4 @@ var connect = require('connect'),
 
 connect()
     .use(connect.static('/home/ch/ruby/walkme/extension'))
-    .listen(3000);
+    .listen(4000);
