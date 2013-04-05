@@ -1,6 +1,12 @@
 RailsPrelaunchSignup::Application.routes.draw do
   mount StripeEvent::Engine => '/stripe'
   
+  namespace :api do
+    namespace :v1  do
+      resources :tokens,:only => [:create, :destroy]
+    end
+  end
+
   get "content/silver"
   get "content/gold"
   get "content/platinum"
