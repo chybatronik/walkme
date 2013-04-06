@@ -2,10 +2,17 @@ class Api::V1::TokensController  < ApplicationController
 
   skip_before_filter :verify_authenticity_token
   respond_to :json
-  
+  after_filter :set_access_control_headers
+
+  def set_access_control_headers
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Request-Method'] = '*'
+  end
+
   def create
     email = params[:email]
     password = params[:password]
+
     if request.format != :json
       render :status=>406, :json=>{:message=>"The request must be json"}
       return

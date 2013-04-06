@@ -6,39 +6,43 @@
     <title>"Walkme"</title>
   </head>
   <body>
+    <div class='token'></div>
     <div class='well'>
-      <form>
-        <div class='control-group email optional user_email'>
-          <label class='email optional control-label'>
-            Email
-          </label>
-          <div class='controls'>
-            <input class='string email optional' name='user[email]' size='50' type='email' value=''>
-          </div>
-        </div>
-        <div class='control-group password optional user_password'>
-          <label class='password optional control-label'>
-            Password
-          </label>
-          <div class='controls'>
-            <input class='password optional' id='user_password' name='user[password]' size='50' type='password'>
-          </div>
-        </div>
-        <div class='control-group boolean optional user_remember_me'>
-          <label class='boolean optional control-label'>
-            Remember me
-          </label>
-          <div class='controls'>
-            <input name='user[remember_me]' type='hidden' value='0'>
-            <label class='checkbox'>
-              <input class='boolean optional' name='user[remember_me]' type='checkbox' value='1'>
-            </label>
-          </div>
-        </div>
-        <input class='btn btn-primary' name='commit' type='submit' value='Sign in'>
-      </form>
+      <div class='login'></div>
     </div>
   </body>
+  <script id='login-form' type='text/template'>
+    <form>
+      <div class='control-group email optional user_email'>
+        <label class='email optional control-label'>
+          Email
+        </label>
+        <div class='controls'>
+          <input class='string email optional' name='user[email]' size='50' type='email' value='user@example.com'>
+        </div>
+      </div>
+      <div class='control-group password optional user_password'>
+        <label class='password optional control-label'>
+          Password
+        </label>
+        <div class='controls'>
+          <input class='password optional' id='user_password' name='user[password]' size='50' type='password' value='changeme'>
+        </div>
+      </div>
+      <div class='control-group boolean optional user_remember_me'>
+        <label class='boolean optional control-label'>
+          Remember me
+        </label>
+        <div class='controls'>
+          <input name='user[remember_me]' type='hidden' value='0'>
+          <label class='checkbox'>
+            <input class='boolean optional' name='user[remember_me]' type='checkbox' value='1'>
+          </label>
+        </div>
+      </div>
+      <input class='btn btn-primary' name='commit' type='submit' value='Sign in'>
+    </form>
+  </script>
   <script src='lib/jquery-1.9.1.min.js'></script>
   <script src='lib/bootstrap/js/bootstrap.min.js'></script>
   <script src='lib/underscore-min.js'></script>
