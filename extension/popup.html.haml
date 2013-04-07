@@ -4,10 +4,47 @@
 		%link(rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css")
 		%link(rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap-responsive.min.css")
 		%title "Walkme"
-	%body
-		.token
-		.well
-			.login
+	%body{:style=>"width:400px"}
+		.container
+			.navigation
+			.main
+
+	%script#joinview{ :type => 'text/template' }
+		.row-fluid
+			.navbar.navbar-fixed-top
+				.navbar-inner
+					.container
+						%a.brand{:id=>'home'}
+							Walkme
+						.btn-group.pull-right
+							%a.btn.btn-info{:href=>"#", :id=>"help"}
+								help
+							%a.btn.btn-link{:id=>"logout"}
+								loguot
+		.row-fluid
+			.tabbable
+				%ul.nav.nav-tabs
+					%li.active
+						%a{:href=>"#workspace-panel", "data-toggle"=>"tab", :id=>"workspace"}
+							WorkSpace
+					%li
+						%a{:href=>"#setting-panel", "data-toggle"=>"tab", :id=>"setting"}
+							Setting
+					%li
+						%a{:href=>"#publish-panel", "data-toggle"=>"tab", :id=>"publish"}
+							Publish
+				.tab-content
+					.tab-pane.active{:id=>"workspace-panel"}
+						%p 
+							I'm in Section 1.
+					.tab-pane{:id=>"setting-panel"}
+						%p 
+							I'm in Section 2.
+					.tab-pane{:id=>"publish-panel"}
+						%p 
+							I'm in Section 3.
+
+
 
 	%script#login-form{ :type => 'text/template' }
 		%form

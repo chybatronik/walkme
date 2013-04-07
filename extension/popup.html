@@ -5,12 +5,71 @@
     <link href='lib/bootstrap/css/bootstrap-responsive.min.css' rel='stylesheet' type='text/css'>
     <title>"Walkme"</title>
   </head>
-  <body>
-    <div class='token'></div>
-    <div class='well'>
-      <div class='login'></div>
+  <body style='width:400px'>
+    <div class='container'>
+      <div class='navigation'></div>
+      <div class='main'></div>
     </div>
   </body>
+  <script id='joinview' type='text/template'>
+    <div class='row-fluid'>
+      <div class='navbar navbar-fixed-top'>
+        <div class='navbar-inner'>
+          <div class='container'>
+            <a class='brand' id='home'>
+              Walkme
+            </a>
+            <div class='btn-group pull-right'>
+              <a class='btn btn-info' href='#' id='help'>
+                help
+              </a>
+              <a class='btn btn-link' id='logout'>
+                loguot
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='row-fluid'>
+      <div class='tabbable'>
+        <ul class='nav nav-tabs'>
+          <li class='active'>
+            <a data-toggle='tab' href='#workspace-panel' id='workspace'>
+              WorkSpace
+            </a>
+          </li>
+          <li>
+            <a data-toggle='tab' href='#setting-panel' id='setting'>
+              Setting
+            </a>
+          </li>
+          <li>
+            <a data-toggle='tab' href='#publish-panel' id='publish'>
+              Publish
+            </a>
+          </li>
+        </ul>
+        <div class='tab-content'>
+          <div class='tab-pane active' id='workspace-panel'>
+            <p>
+              I'm in Section 1.
+            </p>
+          </div>
+          <div class='tab-pane' id='setting-panel'>
+            <p>
+              I'm in Section 2.
+            </p>
+          </div>
+          <div class='tab-pane' id='publish-panel'>
+            <p>
+              I'm in Section 3.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
   <script id='login-form' type='text/template'>
     <form>
       <div class='control-group email optional user_email'>
