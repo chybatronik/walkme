@@ -1,11 +1,35 @@
 token = ""
 
+##############
+#controllers
+##############
+
+main = ->
+	#login()
+	navigateview = new NavigationView();
+
 login = ->
-	login_template = _.template($('#login-form').html())
-	$('.main').empty().append(login_template())
-	$("input.btn.btn-primary").click (evt)->
+	loginview = new LoginView();
+
+
+###############
+# VIEW
+###############
+
+LoginView = Backbone.View.extend(
+	template: _.template($('#login-form').html())
+
+	initialize:->  	
+		_.bindAll @
+		@.render()
+		console.log "initialize LoginView", token
+
+	events:
+		"click #submit": "get_token"
+
+	get_token:(evt)->	
 		evt.preventDefault()
-		$.ajax 
+		$.ajax(
 			url : 'http://127.0.0.1:3000/api/v1/tokens.json'
 			type : "POST"
 			dataType: "json"
@@ -13,25 +37,24 @@ login = ->
 				email:  $('input.email').val()
 				password: $('input.password').val()
 			success: (data, status, response) ->
-				console.log data, status, response
 				token = data.token
-				$('.main').empty().append data.token
+				main()
+			)
 
-main = ->
-	#login()
-	navigateview = new NavigationView();
+	render:->
+		this.$el.html(this.template());
+		$('.main').empty().append(this.el)
+)
 
-###############
-# VIEW
-###############
+###########
+
 NavigationView = Backbone.View.extend(
   template: _.template($('#joinview').html())
-
 
   initialize:->  	
   	_.bindAll @
   	@.render()
-  	console.log "initialize"
+  	console.log "initialize NavigationView", token
 
   events:
     "click #help": "help"
@@ -61,4 +84,4 @@ NavigationView = Backbone.View.extend(
   	$('.navigation').empty().append(this.el)
 )
 
-$(window).load(main)
+$(window).load(login)
