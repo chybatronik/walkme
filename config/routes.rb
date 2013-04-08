@@ -9,9 +9,7 @@ RailsPrelaunchSignup::Application.routes.draw do
 
   get "content/silver"
   get "content/gold"
-  get "content/platinum"
-
-  
+  get "content/platinum"  
 
   authenticated :user do
     root :to => 'home#index'
