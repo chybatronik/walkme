@@ -1,5 +1,5 @@
 var connect = require('connect'),
-    http = require('http');
+http        = require('http');
 
 connect()
     .use(connect.static('/home/ch/ruby/walkme/extension'))
