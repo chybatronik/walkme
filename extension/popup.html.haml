@@ -9,7 +9,7 @@
 			.navigation
 			.main
 
-	%script#joinview{ :type => 'text/template' }
+	%script#navigation_view{ :type => 'text/template' }
 		.row-fluid
 			.navbar.navbar-fixed-top
 				.navbar-inner
@@ -17,6 +17,8 @@
 						%a.brand{:id=>'home'}
 							Walkme
 						.btn-group.pull-right
+							%a.btn.btn-link
+								<%= name %>
 							%a.btn.btn-info{:href=>"#", :id=>"help"}
 								help
 							%a.btn.btn-link{:id=>"logout"}

@@ -1,11 +1,19 @@
-token = ""
+####
+#User
+####
+class User
+	set:(data)->
+		@token = data.token
+		@email = data.email
 
+user = new User
 ##############
 #controllers
 ##############
 
 main = ->
 	#login()
+	$('.main').empty()
 	navigateview = new NavigationView();
 
 login = ->
@@ -22,7 +30,7 @@ LoginView = Backbone.View.extend(
 	initialize:->  	
 		_.bindAll @
 		@.render()
-		console.log "initialize LoginView", token
+		console.log "initialize LoginView", user.token
 
 	events:
 		"click #submit": "get_token"
@@ -37,7 +45,9 @@ LoginView = Backbone.View.extend(
 				email:  $('input.email').val()
 				password: $('input.password').val()
 			success: (data, status, response) ->
-				token = data.token
+				###token = data.token
+				email = data.email###
+				user.set(data)
 				main()
 			)
 
@@ -47,14 +57,29 @@ LoginView = Backbone.View.extend(
 )
 
 ###########
-
-NavigationView = Backbone.View.extend(
-  template: _.template($('#joinview').html())
+CollectionStepView = Backbone.View.extend(
+  template: _.template($('#collection_step_view').html())
 
   initialize:->  	
   	_.bindAll @
   	@.render()
-  	console.log "initialize NavigationView", token
+  	console.log "initialize CollectionStepView"
+
+  render:->
+  	collection = ['asd', 'asdasd', 'asdasdasd']
+  	#this.$el.html(this.template());
+  	this.$el.append( this.template() );
+  	$('.workspace-panel').empty().append(this.el)
+)
+###########
+
+NavigationView = Backbone.View.extend(
+  template: _.template($('#navigation_view').html())
+
+  initialize:->  	
+  	_.bindAll @
+  	@.render()
+  	console.log "initialize NavigationView", user.token
 
   events:
     "click #help": "help"
@@ -80,7 +105,7 @@ NavigationView = Backbone.View.extend(
   	console.log "logout", ev.target, $(ev.target).attr('id')
 
   render:->
-  	this.$el.html(this.template());
+  	this.$el.html(this.template({name: user.email}));
   	$('.navigation').empty().append(this.el)
 )
 
