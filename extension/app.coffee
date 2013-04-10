@@ -19,7 +19,6 @@ main = ->
 login = ->
 	loginview = new LoginView();
 
-
 ###############
 # VIEW
 ###############
@@ -57,7 +56,7 @@ LoginView = Backbone.View.extend(
 )
 
 ###########
-CollectionStepView = Backbone.View.extend(
+###CollectionStepView = Backbone.View.extend(
   template: _.template($('#collection_step_view').html())
 
   initialize:->  	
@@ -69,8 +68,8 @@ CollectionStepView = Backbone.View.extend(
   	collection = ['asd', 'asdasd', 'asdasdasd']
   	#this.$el.html(this.template());
   	this.$el.append( this.template() );
-  	$('.workspace-panel').empty().append(this.el)
-)
+  	$('#workspace-panel').empty().append(this.el)
+)###
 ###########
 
 NavigationView = Backbone.View.extend(
@@ -110,3 +109,17 @@ NavigationView = Backbone.View.extend(
 )
 
 $(window).load(login)
+
+
+
+`
+chrome.tabs.getSelected(null, function(tab) {
+  chrome.tabs.sendRequest(tab.id, {method: "fromPopup", tabid: tab.id}, function(response) {
+    console.log(response.data);
+  });
+});
+
+chrome.extension.sendRequest({method: "fromContentScript"}, function(response) {
+      console.log(response.data);
+    });
+`

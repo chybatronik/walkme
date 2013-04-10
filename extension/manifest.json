@@ -12,5 +12,12 @@
   "permissions": [
     "http://127.0.0.1:3000/", "debugger", "background", "tabs"
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' "
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' ",
+
+  "content_scripts": [ {
+    "matches": ["http://*/*"],
+    "css":["fix.css"],
+    "js": ["lib/jquery-1.9.1.min.js", "page.js"]
+  }
+  ]
 }
