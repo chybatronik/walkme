@@ -23,5 +23,5 @@
   "background": {
     "scripts": ["background.js"]
   },
-  "web_accessible_resources": ["fix.css"]
+  "web_accessible_resources": ["fix.css", "lib/intro/intro.min.js", "lib/intro/introjs-ie.min.css", "lib/intro/introjs.min.css", "lib/bootstrap/js/bootstrap.js", "lib/bootstrap/css/bootstrap.min.css", "lib/bootstrap/img/glyphicons-halflings.png", "lib/bootstrap/css/bootstrap-responsive.min.css"]
 }

@@ -86,23 +86,19 @@ NavigationView = Backbone.View.extend(
     "click #setting": "setting"
     "click #publish": "publish"
     "click #logout": "logout"
+    "click #start": "start"
+    "click #stop": "stop"
+
+  start:(ev)->
+    ev.preventDefault()
+    send_content_script("start")
+
+  stop:(ev)->
+    ev.preventDefault()
+    send_content_script("stop")
 
   help:(ev)->
     ev.preventDefault()
-    console.log "HELP"
-    ###chrome.tabs.getCurrent(
-      (tab)=>
-        console.log(tab)
-        chrome.tabs.sendMessage(tab.id, "doSomething")    
-    )###
-
-    chrome.tabs.query({"status":"complete","windowId":chrome.windows.WINDOW_ID_CURRENT,"active":true}, 
-      (tabs)=>
-        console.log(JSON.stringify(tabs[0]))
-        console.log(tabs[0].id)
-        chrome.tabs.sendMessage(tabs[0].id, "doSomething") 
-    )
-    console.log "HELP end"
 
   workspace:(ev)->
     console.log "workspace", ev.target, $(ev.target).attr('id')
@@ -120,5 +116,13 @@ NavigationView = Backbone.View.extend(
     this.$el.html(this.template({name: user.email}));
     $('.navigation').empty().append(this.el)
 )
+
+send_content_script = (action) =>
+  chrome.tabs.query({"status":"complete","windowId":chrome.windows.WINDOW_ID_CURRENT,"active":true}, 
+    (tabs)=>
+      console.log(JSON.stringify(tabs[0]))
+      console.log(tabs[0].id)
+      chrome.tabs.sendMessage(tabs[0].id, {action : action}) 
+  )
 
 $(window).load(login)

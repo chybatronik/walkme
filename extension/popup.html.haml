@@ -37,8 +37,15 @@
 							Publish
 				.tab-content
 					.tab-pane.active{:id=>"workspace-panel"}
-						%p 
-							I'm in Section 1.
+						.content
+							%p 
+								I'm in Section 1.
+						.actions
+							.btn-group.pull-left
+								%a.btn.btn-info{:href=>"#", :id=>"start"}
+									start
+								%a.btn.btn-info{:href=>"#", :id=>"stop"}
+									stop
 					.tab-pane{:id=>"setting-panel"}
 						%p 
 							I'm in Section 2.
