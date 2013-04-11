@@ -51,7 +51,7 @@
         },
         success: function(data, status, response) {
           /*token = data.token
-          				email = data.email
+          email = data.email
           */
           user.set(data);
           return main();
@@ -67,16 +67,16 @@
   /*CollectionStepView = Backbone.View.extend(
     template: _.template($('#collection_step_view').html())
   
-    initialize:->  	
-    	_.bindAll @
-    	@.render()
-    	console.log "initialize CollectionStepView"
+    initialize:->   
+      _.bindAll @
+      @.render()
+      console.log "initialize CollectionStepView"
   
     render:->
-    	collection = ['asd', 'asdasd', 'asdasdasd']
-    	#this.$el.html(this.template());
-    	this.$el.append( this.template() );
-    	$('#workspace-panel').empty().append(this.el)
+      collection = ['asd', 'asdasd', 'asdasdasd']
+      #this.$el.html(this.template());
+      this.$el.append( this.template() );
+      $('#workspace-panel').empty().append(this.el)
   )
   */
 
@@ -96,8 +96,27 @@
       "click #logout": "logout"
     },
     help: function(ev) {
+      var _this = this;
+
       ev.preventDefault();
-      return console.log("HELP", ev.target, $(ev.target).attr('id'));
+      console.log("HELP");
+      /*chrome.tabs.getCurrent(
+        (tab)=>
+          console.log(tab)
+          chrome.tabs.sendMessage(tab.id, "doSomething")    
+      )
+      */
+
+      chrome.tabs.query({
+        "status": "complete",
+        "windowId": chrome.windows.WINDOW_ID_CURRENT,
+        "active": true
+      }, function(tabs) {
+        console.log(JSON.stringify(tabs[0]));
+        console.log(tabs[0].id);
+        return chrome.tabs.sendMessage(tabs[0].id, "doSomething");
+      });
+      return console.log("HELP end");
     },
     workspace: function(ev) {
       return console.log("workspace", ev.target, $(ev.target).attr('id'));

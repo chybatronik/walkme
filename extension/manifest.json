@@ -10,17 +10,18 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "http://127.0.0.1:3000/", "debugger", "background", "tabs"
+    "http://*/*", "https://*/*", "file:///*/*", "debugger", "background", "tabs"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' ",
 
   "content_scripts": [ {
-    "matches": ["http://*/*", "https://*/*"],
-    "css":["fix.css"],
-    "js": ["lib/jquery-1.9.1.min.js", "page.js"]
+    "matches": ["http://*/*", "https://*/*", "file:///*/*"],
+    "js": ["lib/jquery-1.9.1.min.js", "page.js"],
+    "all_frames": true
   }
   ],
   "background": {
     "scripts": ["background.js"]
-  }
+  },
+  "web_accessible_resources": ["fix.css"]
 }
