@@ -109,17 +109,3 @@ NavigationView = Backbone.View.extend(
 )
 
 $(window).load(login)
-
-
-
-`
-chrome.tabs.getSelected(null, function(tab) {
-  chrome.tabs.sendRequest(tab.id, {method: "fromPopup", tabid: tab.id}, function(response) {
-    console.log(response.data);
-  });
-});
-
-chrome.extension.sendRequest({method: "fromContentScript"}, function(response) {
-      console.log(response.data);
-    });
-`

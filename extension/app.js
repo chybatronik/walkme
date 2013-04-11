@@ -18,12 +18,14 @@
 
   main = function() {
     var navigateview;
+
     $('.main').empty();
     return navigateview = new NavigationView();
   };
 
   login = function() {
     var loginview;
+
     return loginview = new LoginView();
   };
 
@@ -118,17 +120,5 @@
   });
 
   $(window).load(login);
-
-  
-chrome.tabs.getSelected(null, function(tab) {
-  chrome.tabs.sendRequest(tab.id, {method: "fromPopup", tabid: tab.id}, function(response) {
-    console.log(response.data);
-  });
-});
-
-chrome.extension.sendRequest({method: "fromContentScript"}, function(response) {
-      console.log(response.data);
-    });
-;
 
 }).call(this);
