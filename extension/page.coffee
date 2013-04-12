@@ -1,6 +1,7 @@
 console.log "page load"
 current_element = ""
 count_task = 0
+is_show_modal = false
 
 load_one_style = (name_file)=>
   style = document.createElement('link')
@@ -21,10 +22,10 @@ load_one_script = (name_file)=>
 
 loads = =>
   load_one_style("fix.css")
-  load_one_script("lib/intro/intro.min.js")
+  #load_one_script("lib/intro/intro.min.js")
   load_one_style("lib/intro/introjs-ie.min.css")
   load_one_style("lib/intro/introjs.min.css")
-  load_one_script("lib/bootstrap/js/bootstrap.js")
+  #load_one_script("lib/bootstrap/js/bootstrap.js")
   load_one_style("lib/bootstrap/css/bootstrap.min.css")
   load_one_style("lib/bootstrap/css/bootstrap-responsive.min.css")
   $('body').append(form_create)
@@ -36,37 +37,56 @@ remove_one = (id)=>
 
 removes = =>
   remove_one("fix.css")
-  remove_one("lib/intro/intro.min.js")
+  #remove_one("lib/intro/intro.min.js")
   remove_one("lib/intro/introjs-ie.min.css")
   remove_one("lib/intro/introjs.min.css")
 
+get_element= (elem)=>
+  query = elem.replace("'", "\'")
+  query = "'*:contains(\"" + elem + "\")'"
+  #query = '\'' + query.replace("\'", "\"") + '\'' 
+  console.log query
+  query
+   
 click = (e)=>
   e.preventDefault()
   if $(e.target)[0].id == "save_send_data"
     console.log "save_send_data"
-    #load_one_style("fix.css")
-    console.log  $('#myModal').modal('show')
+    
+
+    name = $("#inputName").val()
+    text = $("#inputText").val()
+    a = get_element(current_element)
+    $(a).attr('data-intro', name + " -- " + text)
+    $(a).attr('data-step', count_task)
+    console.log $(a).attr('data-intro')
+    chrome.extension.sendMessage(
+      action : "task"
+      name  : name
+      text  : text
+      object: current_element
+    )
+
+    load_one_style("fix.css")
+    $('#myModal').modal('hide')
+    is_show_modal = false
   else
-    count_task += 1
-    console.log "click", $(e.target)[0].id, $(e.target)[0].outerHTML;
-    #remove_one("fix.css")
-    console.log $("*").find('#myModal').modal('show')#$('#myModal').modal('show')
-  ##clear
-  #$("body").off("click",  click )
-  #remove_one("fix.css")
-  ##important data
-  current_element = $(e.target)[0].outerHTML
+    if not is_show_modal
+      count_task += 1
+      console.log "click", $(e.target)[0].id, $(e.target)[0].outerHTML;
 
-  ###chrome.extension.sendMessage(
-    action : "task"
-    object:$(e.target)[0].outerHTML
-  )###
+      remove_one("fix.css")
+      current_element = $(e.target)[0].outerHTML
+      $('#myModal').modal('show')
+      is_show_modal = true
 
-
-
+  if $(e.target)[0].id == "close_data"
+    load_one_style("fix.css")
+    $('#myModal').modal('hide')
+    is_show_modal = false
 
 $.ready = =>  
-  ###$("#save_send_data").live("click",  save_send_data )###
+  console.log "main"
   chrome.extension.onMessage.addListener((request,sender,sendResponse)=>
     console.log("page.coffee", request.action)
     switch request.action
@@ -102,7 +122,7 @@ form_create =  """
               
             </div>
             <div class="modal-footer">
-              <button class="btn" data-dismiss="modal">Close</button>
+              <button class="btn" data-dismiss="modal" id="close_data">Close</button>
               <button class="btn btn-primary" id="save_send_data">Save changes</button>
             </div>
           </div>
