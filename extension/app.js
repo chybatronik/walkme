@@ -19,14 +19,12 @@
 
   main = function() {
     var navigateview;
-
     $('.main').empty();
     return navigateview = new NavigationView();
   };
 
   login = function() {
     var loginview;
-
     return loginview = new LoginView();
   };
 
@@ -96,7 +94,8 @@
       "click #publish": "publish",
       "click #logout": "logout",
       "click #start": "start",
-      "click #stop": "stop"
+      "click #stop": "stop",
+      "click #play": "play"
     },
     start: function(ev) {
       ev.preventDefault();
@@ -105,6 +104,10 @@
     stop: function(ev) {
       ev.preventDefault();
       return send_content_script("stop");
+    },
+    play: function(ev) {
+      ev.preventDefault();
+      return send_content_script("play");
     },
     help: function(ev) {
       return ev.preventDefault();

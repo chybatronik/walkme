@@ -88,6 +88,7 @@ NavigationView = Backbone.View.extend(
     "click #logout": "logout"
     "click #start": "start"
     "click #stop": "stop"
+    "click #play": "play"
 
   start:(ev)->
     ev.preventDefault()
@@ -96,6 +97,10 @@ NavigationView = Backbone.View.extend(
   stop:(ev)->
     ev.preventDefault()
     send_content_script("stop")
+
+  play:(ev)->
+    ev.preventDefault()
+    send_content_script("play")
 
   help:(ev)->
     ev.preventDefault()

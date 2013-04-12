@@ -1,3 +1,28 @@
+`
+jQuery.fn.getPath = function () {
+    if (this.length != 1) throw 'Requires one element.';
+
+    var path, node = this;
+    while (node.length) {
+        var realNode = node[0], name = realNode.localName;
+        if (!name) break;
+        name = name.toLowerCase();
+
+        var parent = node.parent();
+
+        var siblings = parent.children(name);
+        if (siblings.length > 1) { 
+            name += ':eq(' + siblings.index(realNode) + ')';
+        }
+
+        path = name + (path ? '>' + path : '');
+        node = parent;
+    }
+
+    return path;
+};
+`
+
 console.log "page load"
 current_element = ""
 count_task = 0
@@ -41,13 +66,7 @@ removes = =>
   remove_one("lib/intro/introjs-ie.min.css")
   remove_one("lib/intro/introjs.min.css")
 
-get_element= (elem)=>
-  query = elem.replace("'", "\'")
-  query = "'*:contains(\"" + elem + "\")'"
-  #query = '\'' + query.replace("\'", "\"") + '\'' 
-  console.log query
-  query
-   
+
 click = (e)=>
   e.preventDefault()
   if $(e.target)[0].id == "save_send_data"
@@ -56,10 +75,16 @@ click = (e)=>
 
     name = $("#inputName").val()
     text = $("#inputText").val()
-    a = get_element(current_element)
+    a = current_element
     $(a).attr('data-intro', name + " -- " + text)
     $(a).attr('data-step', count_task)
-    console.log $(a).attr('data-intro')
+    $(a).attr('data-original-title', name)
+    $(a).attr('data-placement', "top")
+    $(a).attr('data-content', text)
+    $(a).popover('show')
+
+    console.log $(a).attr('data-intro'), $(a).attr('data-step')
+    #introJs().start();
     chrome.extension.sendMessage(
       action : "task"
       name  : name
@@ -73,10 +98,10 @@ click = (e)=>
   else
     if not is_show_modal
       count_task += 1
-      console.log "click", $(e.target)[0].id, $(e.target)[0].outerHTML;
+      console.log "click", $(e.target).getPath(), $(e.target)[0].outerHTML;
 
       remove_one("fix.css")
-      current_element = $(e.target)[0].outerHTML
+      current_element = $(e.target).getPath()
       $('#myModal').modal('show')
       is_show_modal = true
 
