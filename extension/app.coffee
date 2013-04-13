@@ -5,6 +5,27 @@ class User
   set:(data)->
     @token = data.token
     @email = data.email
+    console.log "asdadasdads"
+    chrome.storage.sync.set({'user':JSON.stringify({token : data.token, email : data.email})}, =>
+      console.log('SAVE user')
+    )
+  get:->
+    chrome.storage.sync.get('user', (storage)=>
+      console.log "get user", storage
+      
+      if not ('user' in storage)
+        loginview = new LoginView();
+      else
+        stored = JSON.parse(storage.user)
+        console.log stored
+        @token = stored.token
+        @email = stored.email
+        main()
+    )
+  delete:->
+    chrome.storage.sync.set({'user':null}, =>
+      console.log('delete user')
+    )
 
 user = new User
 ##############
@@ -17,7 +38,7 @@ main = ->
   navigateview = new NavigationView();
 
 login = ->
-  loginview = new LoginView();
+  user.get()
 
 ###############
 # VIEW
@@ -37,7 +58,7 @@ LoginView = Backbone.View.extend(
   get_token:(evt)-> 
     evt.preventDefault()
     $.ajax(
-      url : 'http://127.0.0.1:3000/api/v1/tokens.json'
+      url : 'http://walkme.aws.af.cm/api/v1/tokens.json'
       type : "POST"
       dataType: "json"
       data:
@@ -89,6 +110,7 @@ NavigationView = Backbone.View.extend(
     "click #start": "start"
     "click #stop": "stop"
     "click #play": "play"
+    "click #clear_data": "clear_data"
 
   start:(ev)->
     ev.preventDefault()
@@ -100,7 +122,19 @@ NavigationView = Backbone.View.extend(
 
   play:(ev)->
     ev.preventDefault()
-    send_content_script("play")
+    chrome.storage.sync.get('tasks', (storage)=>
+      console.log "get tasks", storage
+      stored = JSON.parse(storage.tasks)
+      console.log "get length", stored.length
+      send_content_script("play", storage.tasks)
+    )
+  
+  clear_data:(ev)->
+    ev.preventDefault()
+    chrome.storage.sync.set({'tasks': JSON.stringify([])}, =>
+      console.log('clear_data')
+      @.render()
+    )
 
   help:(ev)->
     ev.preventDefault()
@@ -116,18 +150,33 @@ NavigationView = Backbone.View.extend(
 
   logout:(ev)->
     console.log "logout", ev.target, $(ev.target).attr('id')
+    user.delete()
+    $('.navigation').empty()
+    login()
 
   render:->
-    this.$el.html(this.template({name: user.email}));
-    $('.navigation').empty().append(this.el)
+    chrome.storage.sync.get('tasks', (storage)=>
+      console.log "get tasks", storage
+      if 'tasks' in storage
+        stored = JSON.parse(storage.tasks)
+        console.log "get length", stored.length
+      else
+        stored = []
+      this.$el.html(this.template({name: user.email, tasks:stored}));
+      $('.navigation').empty().append(this.el)
+    )
+    
 )
 
-send_content_script = (action) =>
+send_content_script = (action, stored=null) =>
   chrome.tabs.query({"status":"complete","windowId":chrome.windows.WINDOW_ID_CURRENT,"active":true}, 
     (tabs)=>
       console.log(JSON.stringify(tabs[0]))
       console.log(tabs[0].id)
-      chrome.tabs.sendMessage(tabs[0].id, {action : action}) 
+      if stored
+        chrome.tabs.sendMessage(tabs[0].id, {action : action, stored: stored }) 
+      else
+        chrome.tabs.sendMessage(tabs[0].id, {action : action}) 
   )
 
 $(window).load(login)

@@ -10,7 +10,7 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "http://*/*", "https://*/*", "file:///*/*", "debugger", "background", "tabs"
+    "http://*/*", "https://*/*", "file:///*/*", "storage", "background", "tabs"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' ",
 

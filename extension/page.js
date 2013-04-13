@@ -68,13 +68,15 @@ jQuery.fn.getPath = function () {
   remove_one = function(id) {
     var elem;
     elem = document.getElementById(id);
-    return elem.parentNode.removeChild(elem);
+    if (elem) {
+      return elem.parentNode.removeChild(elem);
+    }
   };
 
   removes = function() {
     remove_one("fix.css");
-    remove_one("lib/intro/introjs-ie.min.css");
-    return remove_one("lib/intro/introjs.min.css");
+    remove_one("lib/bootstrap/css/bootstrap.min.css");
+    return remove_one("lib/bootstrap/css/bootstrap-responsive.min.css");
   };
 
   click = function(e) {
@@ -121,6 +123,7 @@ jQuery.fn.getPath = function () {
   $.ready = function() {
     console.log("main");
     return chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+      var a, count, elem, stored, _i, _len;
       console.log("page.coffee", request.action);
       switch (request.action) {
         case "start":
@@ -131,6 +134,25 @@ jQuery.fn.getPath = function () {
           $("body").off("click", click);
           removes();
           return console.log("page chrome.extension stop");
+        case "play":
+          $("body").off("click", click);
+          removes();
+          load_one_style("lib/intro/introjs-ie.min.css");
+          load_one_style("lib/intro/introjs.min.css");
+          $(".popover").remove();
+          $("*").removeAttr("data-step");
+          $("*").removeAttr("data-intro");
+          console.log("page chrome.extension play", request.stored);
+          stored = JSON.parse(request.stored);
+          count = 0;
+          for (_i = 0, _len = stored.length; _i < _len; _i++) {
+            elem = stored[_i];
+            count += 1;
+            a = elem.object;
+            $(a).attr('data-intro', elem.name + " -- " + elem.text);
+            $(a).attr('data-step', count);
+          }
+          return introJs().start();
       }
     });
   };

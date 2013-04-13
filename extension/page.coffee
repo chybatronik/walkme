@@ -58,13 +58,16 @@ loads = =>
 
 remove_one = (id)=>
   elem = document.getElementById(id)
-  elem.parentNode.removeChild(elem)
+  if elem
+    elem.parentNode.removeChild(elem)
 
 removes = =>
   remove_one("fix.css")
   #remove_one("lib/intro/intro.min.js")
-  remove_one("lib/intro/introjs-ie.min.css")
-  remove_one("lib/intro/introjs.min.css")
+  #remove_one("lib/intro/introjs-ie.min.css")
+  #remove_one("lib/intro/introjs.min.css")
+  remove_one("lib/bootstrap/css/bootstrap.min.css")
+  remove_one("lib/bootstrap/css/bootstrap-responsive.min.css")
 
 
 click = (e)=>
@@ -84,7 +87,6 @@ click = (e)=>
     $(a).popover('show')
 
     console.log $(a).attr('data-intro'), $(a).attr('data-step')
-    #introJs().start();
     chrome.extension.sendMessage(
       action : "task"
       name  : name
@@ -123,6 +125,26 @@ $.ready = =>
         $("body").off("click",  click )
         removes()
         console.log "page chrome.extension stop"
+      when "play" 
+        $("body").off("click",  click )
+        removes()
+        load_one_style("lib/intro/introjs-ie.min.css")
+        load_one_style("lib/intro/introjs.min.css")
+        $(".popover").remove();
+        $("*").removeAttr("data-step")
+        $("*").removeAttr("data-intro")
+        console.log "page chrome.extension play", request.stored
+        stored = JSON.parse(request.stored)
+        count = 0 
+        for elem in stored
+          count += 1
+          a = elem.object
+          $(a).attr('data-intro', elem.name + " -- " + elem.text)
+          $(a).attr('data-step', count)
+
+        
+        introJs().start()
+
   )
 
 form_create =  """

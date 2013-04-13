@@ -58,6 +58,18 @@
             <div class='content'>
               <p>
                 I'm in Section 1.
+                <table class='table table-striped'>
+                  <% _.each(tasks, function(acs) { %>
+                  <tr>
+                    <td>
+                      <%= acs.name %>
+                    </td>
+                    <td>
+                      <%= acs.text %>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </table>
               </p>
             </div>
             <div class='actions'>
@@ -67,6 +79,12 @@
                 </a>
                 <a class='btn btn-info' href='#' id='stop'>
                   stop
+                </a>
+                <a class='btn btn-info' href='#' id='play'>
+                  play
+                </a>
+                <a class='btn btn-info' href='#' id='clear_data'>
+                  clear_data
                 </a>
               </div>
             </div>
