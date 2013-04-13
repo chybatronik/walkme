@@ -13,7 +13,7 @@ class User
     chrome.storage.sync.get('user', (storage)=>
       console.log "get user", storage
       
-      if not ('user' in storage)
+      if not storage.user?
         loginview = new LoginView();
       else
         stored = JSON.parse(storage.user)
@@ -157,7 +157,7 @@ NavigationView = Backbone.View.extend(
   render:->
     chrome.storage.sync.get('tasks', (storage)=>
       console.log "get tasks", storage
-      if 'tasks' in storage
+      if storage.tasks?
         stored = JSON.parse(storage.tasks)
         console.log "get length", stored.length
       else

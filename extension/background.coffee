@@ -3,7 +3,7 @@ stored = []
 
 chrome.storage.sync.get('tasks', (storage)=>
   console.log "get tasks", storage
-  if 'tasks' in storage
+  if storage.tasks?
     stored = JSON.parse(storage.tasks)
     console.log "get length", stored.length
 )
@@ -13,7 +13,7 @@ chrome.extension.onMessage.addListener((request,sender,sendResponse)=>
   if request.action == "task"
     chrome.storage.sync.get('tasks', (storage)=>
       console.log "get tasks", storage
-      if 'tasks' in storage
+      if storage.tasks?
         stored = JSON.parse(storage.tasks)
         console.log "get length", stored.length
       stored.push(request)
