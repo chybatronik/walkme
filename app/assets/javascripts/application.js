@@ -18,6 +18,7 @@
 //= require jquery.readyselector
 //= require jquery.externalscript
 //= require_tree .
+
 $('document').ready(function() {
   
   // use AJAX to submit the "request invitation" form

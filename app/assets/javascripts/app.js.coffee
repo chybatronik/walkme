@@ -1,6 +1,10 @@
+#= require jquery
+#= require jquery_ujs
+#= require bootstrap
 #= require underscore
 #= require backbone
 #= require backbone.layoutmanager
+#= require backbone.localStorage
 #= require global
 
 App.Models.MainPage = Backbone.Model.extend({})
@@ -41,6 +45,6 @@ $ ->
   App.Models.mainPage = new App.Models.MainPage(title: "Test title")
   #App.Views.searchForm = new App.Views.SearchFormView()
   App.Views.mainLayout = new App.Views.MainLayout(model: App.Models.mainPage)
-  $("#main").empty().append App.Views.mainLayout.el
+  $("#demo").empty().append App.Views.mainLayout.el
 
   Backbone.history.start pushState: true
