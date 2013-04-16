@@ -2,24 +2,6 @@
 
 App.Models.User = Backbone.Model.extend(
   localStorage: new Backbone.LocalStorage("App_Model_User")
-
-  set_user:(data)->
-    @token = data.token
-    @email = data.email
-    console.log "asdadasdads"
-    this.set({token : data.token, email : data.email})
-  
-  get_user:->
-    token = this.get('token')
-    email = this.get('email')
-    console.log "get user", token, email
-      
-    if not token?
-      false
-    else
-      @token = token
-      @email = email
-      true
 )
 ###########
 
@@ -43,11 +25,15 @@ App.Views.LoginView = Backbone.View.extend(
       data:
         email:  $('input.email').val()
         password: $('input.password').val()
-      success: (data, status, response) ->
-        ###token = data.token
-        email = data.email###
-        user.set_user(data)
-      )
+      success: @.save
+    )
+
+  save:(data, status, response)->
+    @model.set({token : data.token, email : data.email})
+    console.log "save user"
+    App.router.navigate('/app/demo/base', {
+          trigger: true
+        })
 
   serialize: ->
     @model.toJSON()

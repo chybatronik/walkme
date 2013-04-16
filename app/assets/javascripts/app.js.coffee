@@ -29,13 +29,18 @@ App.Views.MainLayout = Backbone.View.extend(
 App.WalkMeRouter = Backbone.Router.extend(
   routes:
     "app/demo": "index"
+    "app/demo/base": "base"
 
   index: ->
-    # Load the top albums.
-    # Should be really recentAlbums
-    # FIXME: This class of AlbumCollection really needs to be refactored
-    # between all the listing.
     console.log  "index"   
+    App.Models.user = new App.Models.User()
+    if not App.Models.user.get("token")?
+      App.Views.mainLayout.setView(".content",
+        new App.Views.LoginView(model:App.Models.user)
+      ).render()
+
+  base: ->
+    console.log  "base"   
     App.Models.user = new App.Models.User()
     if not App.Models.user.get("token")?
       App.Views.mainLayout.setView(".content",
