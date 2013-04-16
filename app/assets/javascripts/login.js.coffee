@@ -28,13 +28,13 @@ class User
 App.Model.User = Backbone.Model.extend(
   localStorage: new Backbone.LocalStorage("App_Model_User")
 
-  set:(data)->
+  set_user:(data)->
     @token = data.token
     @email = data.email
     console.log "asdadasdads"
     this.set({token : data.token, email : data.email})
   
-  get:->
+  get_user:->
     token = this.get('token')
     email = this.get('email')
     console.log "get user", token, email
