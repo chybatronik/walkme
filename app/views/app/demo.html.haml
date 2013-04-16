@@ -1,83 +1,95 @@
-#demo.container
-	.navigation
-	.main
+.container
+  #demo
+    %p
+      Hello world
+  
+  %script#container-fluid{ :type => 'text/template' }
+    .container-fluid
+      .row-fluid
+        .content
+          %p
+            Hello WORLD 2
+    #footer.inactive
 
-	%script#navigation_view{ :type => 'text/template' }
-		.row-fluid
-			.navbar.navbar-fixed-top
-				.navbar-inner
-					.container
-						%a.brand{:id=>'home'}
-							Walkme
-						.btn-group.pull-right
-							%a.btn.btn-link
-								<%= name %>
-							%a.btn.btn-info{:href=>"#", :id=>"help"}
-								help
-							%a.btn.btn-link{:id=>"logout"}
-								loguot
-		.row-fluid
-			.tabbable
-				%ul.nav.nav-tabs
-					%li.active
-						%a{:href=>"#workspace-panel", "data-toggle"=>"tab", :id=>"workspace"}
-							WorkSpace
-					%li
-						%a{:href=>"#setting-panel", "data-toggle"=>"tab", :id=>"setting"}
-							Setting
-					%li
-						%a{:href=>"#publish-panel", "data-toggle"=>"tab", :id=>"publish"}
-							Publish
-				.tab-content
-					.tab-pane.active{:id=>"workspace-panel"}
-						.content
-							%p 
-								I'm in Section 1.
-								%table.table.table-striped
-									<% _.each(tasks, function(acs) { %> 
-									%tr
-										%td
-											<%= acs.name %>
-										%td
-											<%= acs.text %>
-									<% }); %>
-						.actions
-							.btn-group.pull-left
-								%a.btn.btn-info{:href=>"#", :id=>"start"}
-									start
-								%a.btn.btn-info{:href=>"#", :id=>"stop"}
-									stop
-								%a.btn.btn-info{:href=>"#", :id=>"play"}
-									play
-								%a.btn.btn-info{:href=>"#", :id=>"clear_data"}
-									clear_data
-					.tab-pane{:id=>"setting-panel"}
-						%p 
-							I'm in Section 2.
-					.tab-pane{:id=>"publish-panel"}
-						%p 
-							I'm in Section 3.
+  %script#content-view{ :type => 'text/template' }
 
 
+  %script#navigation_view{ :type => 'text/template' }
+    .row-fluid
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            %a.brand{:id=>'home'}
+              Walkme
+            .btn-group.pull-right
+              %a.btn.btn-link
+                <%= name %>
+              %a.btn.btn-info{:href=>"#", :id=>"help"}
+                help
+              %a.btn.btn-link{:id=>"logout"}
+                loguot
+    .row-fluid
+      .tabbable
+        %ul.nav.nav-tabs
+          %li.active
+            %a{:href=>"#workspace-panel", "data-toggle"=>"tab", :id=>"workspace"}
+              WorkSpace
+          %li
+            %a{:href=>"#setting-panel", "data-toggle"=>"tab", :id=>"setting"}
+              Setting
+          %li
+            %a{:href=>"#publish-panel", "data-toggle"=>"tab", :id=>"publish"}
+              Publish
+        .tab-content
+          .tab-pane.active{:id=>"workspace-panel"}
+            .content
+              %p 
+                I'm in Section 1.
+                %table.table.table-striped
+                  <% _.each(tasks, function(acs) { %> 
+                  %tr
+                    %td
+                      <%= acs.name %>
+                    %td
+                      <%= acs.text %>
+                  <% }); %>
+            .actions
+              .btn-group.pull-left
+                %a.btn.btn-info{:href=>"#", :id=>"start"}
+                  start
+                %a.btn.btn-info{:href=>"#", :id=>"stop"}
+                  stop
+                %a.btn.btn-info{:href=>"#", :id=>"play"}
+                  play
+                %a.btn.btn-info{:href=>"#", :id=>"clear_data"}
+                  clear_data
+          .tab-pane{:id=>"setting-panel"}
+            %p 
+              I'm in Section 2.
+          .tab-pane{:id=>"publish-panel"}
+            %p 
+              I'm in Section 3.
 
-	%script#login-form{ :type => 'text/template' }
-		%form
-			.control-group.email.optional.user_email
-				%label.email.optional.control-label
-					Email
-				.controls
-					%input.string.email.optional{:name=>"user[email]", :size=>"50", :type=>"email", :value=>"user@example.com"}
-			.control-group.password.optional.user_password
-				%label.password.optional.control-label
-					Password
-				.controls
-					%input.password.optional{:id=>"user_password", :name=>"user[password]", :size=>"50", :type=>"password", :value=>"changeme"}
-			.control-group.boolean.optional.user_remember_me
-				%label.boolean.optional.control-label
-					Remember me
-				.controls
-					%input{:name=>"user[remember_me]", :type=>"hidden", :value=>"0"}
-					%label.checkbox
-						%input.boolean.optional{:name=>"user[remember_me]", :type=>"checkbox", :value=>"1"}
-			%input.btn.btn-primary{:name=>"commit", :type=>"submit", :value=>"Sign in", :id=>"submit"}
+
+
+  %script#login-form{ :type => 'text/template' }
+    %form
+      .control-group.email.optional.user_email
+        %label.email.optional.control-label
+          Email
+        .controls
+          %input.string.email.optional{:name=>"user[email]", :size=>"50", :type=>"email", :value=>"user@example.com"}
+      .control-group.password.optional.user_password
+        %label.password.optional.control-label
+          Password
+        .controls
+          %input.password.optional{:id=>"user_password", :name=>"user[password]", :size=>"50", :type=>"password", :value=>"changeme"}
+      .control-group.boolean.optional.user_remember_me
+        %label.boolean.optional.control-label
+          Remember me
+        .controls
+          %input{:name=>"user[remember_me]", :type=>"hidden", :value=>"0"}
+          %label.checkbox
+            %input.boolean.optional{:name=>"user[remember_me]", :type=>"checkbox", :value=>"1"}
+      %input.btn.btn-primary{:name=>"commit", :type=>"submit", :value=>"Sign in", :id=>"submit"}
 

@@ -26,9 +26,9 @@ App.Views.MainLayout = Backbone.View.extend(
   }
 )
 
-App.BeamRouter = Backbone.Router.extend(
+App.WalkMeRouter = Backbone.Router.extend(
   routes:
-    "": "index"
+    "app/demo": "index"
 
   index: ->
     # Load the top albums.
@@ -36,15 +36,20 @@ App.BeamRouter = Backbone.Router.extend(
     # FIXME: This class of AlbumCollection really needs to be refactored
     # between all the listing.
     console.log  "index"   
+    App.Models.user = new App.Models.User()
+    if not App.Models.user.get("token")?
+      App.Views.mainLayout.setView(".content",
+        new App.Views.LoginView(model:App.Models.user)
+      ).render()
 )
 
 #Equivalent of: $(function() {
 $ ->
   #App.user = new App.Models.User()
-  App.router = app  = new App.BeamRouter()
+  App.router = app  = new App.WalkMeRouter()
   App.Models.mainPage = new App.Models.MainPage(title: "Test title")
   #App.Views.searchForm = new App.Views.SearchFormView()
   App.Views.mainLayout = new App.Views.MainLayout(model: App.Models.mainPage)
   $("#demo").empty().append App.Views.mainLayout.el
-
+  App.Views.mainLayout.render()
   Backbone.history.start pushState: true

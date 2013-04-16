@@ -1,31 +1,6 @@
-class User
-  set:(data)->
-    @token = data.token
-    @email = data.email
-    console.log "asdadasdads"
-    chrome.storage.sync.set({'user':JSON.stringify({token : data.token, email : data.email})}, =>
-      console.log('SAVE user')
-    )
-  get:->
-    chrome.storage.sync.get('user', (storage)=>
-      console.log "get user", storage
-      
-      if not storage.user?
-        loginview = new LoginView();
-      else
-        stored = JSON.parse(storage.user)
-        console.log stored
-        @token = stored.token
-        @email = stored.email
-        main()
-    )
-  delete:->
-    chrome.storage.sync.set({'user':null}, =>
-      console.log('delete user')
-    )
 ###########
 
-App.Model.User = Backbone.Model.extend(
+App.Models.User = Backbone.Model.extend(
   localStorage: new Backbone.LocalStorage("App_Model_User")
 
   set_user:(data)->
@@ -44,17 +19,17 @@ App.Model.User = Backbone.Model.extend(
     else
       @token = token
       @email = email
-      true   
+      true
 )
 ###########
 
-App.View.LoginView = Backbone.View.extend(
-  template: _.template($('#login-form').html())
+App.Views.LoginView = Backbone.View.extend(
+  manage: true
+  template: '#login-form'
 
   initialize:->   
     _.bindAll @
-    @.render()
-    console.log "initialize LoginView", user.token
+    console.log "initialize LoginView", @model.get("token")
 
   events:
     "click #submit": "get_token"
@@ -62,7 +37,7 @@ App.View.LoginView = Backbone.View.extend(
   get_token:(evt)-> 
     evt.preventDefault()
     $.ajax(
-      url : 'http://walkme.aws.af.cm/api/v1/tokens.json'
+      url : 'http://127.0.0.1:3000/api/v1/tokens.json'
       type : "POST"
       dataType: "json"
       data:
@@ -71,13 +46,11 @@ App.View.LoginView = Backbone.View.extend(
       success: (data, status, response) ->
         ###token = data.token
         email = data.email###
-        user.set(data)
-        main()
+        user.set_user(data)
       )
 
-  render:->
-    this.$el.html(this.template());
-    $('.main').empty().append(this.el)
+  serialize: ->
+    @model.toJSON()
 )
 
 ###########
