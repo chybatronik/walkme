@@ -18,8 +18,9 @@ App.Views.LoginView = Backbone.View.extend(
 
   get_token:(evt)-> 
     evt.preventDefault()
+
     $.ajax(
-      url : 'http://127.0.0.1:3000/api/v1/tokens.json'
+      url : "#{document.location.origin}/api/v1/tokens.json"
       type : "POST"
       dataType: "json"
       data:
