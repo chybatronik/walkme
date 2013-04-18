@@ -1,10 +1,13 @@
-NavigationView = Backbone.View.extend(
+App.Views.NavigationView = Backbone.View.extend(
+  manage: true
   template: '#navigation_view'
 
   initialize:(options)->   
     _.bindAll @
+    console.log "options", options
     @user = options.user
-    console.log "initialize NavigationView", @user.get("email")
+    console.log "initialize NavigationView", @user
+    @.workspace()
 
   events:
     "click #help": "help"
@@ -44,8 +47,15 @@ NavigationView = Backbone.View.extend(
   help:(ev)->
     ev.preventDefault()
 
-  workspace:(ev)->
-    console.log "workspace", ev.target, $(ev.target).attr('id')
+  workspace:(ev=null)->
+    if ev?
+      console.log "workspace", ev.target, $(ev.target).attr('id')
+
+    task_collection = new App.Collections.TaskCollection()
+    task_collection.fetch()
+    App.Views.mainLayout.setView(".content #workspace-panel .context",
+        new App.Views.TaskCollectionView(collection:task_collection)
+      ).render()
 
   setting:(ev)->
     console.log "setting", ev.target, $(ev.target).attr('id')
@@ -55,9 +65,9 @@ NavigationView = Backbone.View.extend(
 
   logout:(ev)->
     console.log "logout", ev.target, $(ev.target).attr('id')
-    @user.delete()
+    ###@user.delete()
     $('.navigation').empty()
-    login()
+    login()###
 
   ###render:->
     chrome.storage.sync.get('tasks', (storage)=>
@@ -71,10 +81,11 @@ NavigationView = Backbone.View.extend(
       $('.navigation').empty().append(this.el)
     )###
   serialize: ->
-    @collection.toJSON()
+    @user
 )
 
 send_content_script = (action, stored=null) =>
+  console.log "send_content_script", action
   ###chrome.tabs.query({"status":"complete","windowId":chrome.windows.WINDOW_ID_CURRENT,"active":true}, 
     (tabs)=>
       console.log(JSON.stringify(tabs[0]))

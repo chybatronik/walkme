@@ -9,7 +9,7 @@ App.Views.LoginView = Backbone.View.extend(
   manage: true
   template: '#login-form'
 
-  initialize:->   
+  initialize:()->   
     _.bindAll @
     console.log "initialize LoginView", @model.get("token")
 
@@ -29,7 +29,9 @@ App.Views.LoginView = Backbone.View.extend(
     )
 
   save:(data, status, response)->
+    console.log {token : data.token, email : data.email}
     @model.set({token : data.token, email : data.email})
+    @model.save()
     console.log "save user"
     App.router.navigate('/app/demo/base', {
           trigger: true

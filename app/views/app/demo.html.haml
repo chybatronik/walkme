@@ -6,24 +6,30 @@
   %script#container-fluid{ :type => 'text/template' }
     .container-fluid
       .row-fluid
-        .content
+        .content.span5.pull-right
           %p
             Hello WORLD 2
     #footer.inactive
 
   %script#content-view{ :type => 'text/template' }
 
+  %script#task{ :type => 'text/template' }
+    {{= name}}
+    {{= text}}
+
+  %script#task-list{ :type => 'text/template' }
+    %ul
 
   %script#navigation_view{ :type => 'text/template' }
     .row-fluid
-      .navbar.navbar-fixed-top
+      .navbar
         .navbar-inner
           .container
             %a.brand{:id=>'home'}
               Walkme
             .btn-group.pull-right
               %a.btn.btn-link
-                <%= name %>
+                {{= email }}
               %a.btn.btn-info{:href=>"#", :id=>"help"}
                 help
               %a.btn.btn-link{:id=>"logout"}
@@ -42,17 +48,10 @@
               Publish
         .tab-content
           .tab-pane.active{:id=>"workspace-panel"}
-            .content
+            .context
               %p 
                 I'm in Section 1.
                 %table.table.table-striped
-                  <% _.each(tasks, function(acs) { %> 
-                  %tr
-                    %td
-                      <%= acs.name %>
-                    %td
-                      <%= acs.text %>
-                  <% }); %>
             .actions
               .btn-group.pull-left
                 %a.btn.btn-info{:href=>"#", :id=>"start"}
