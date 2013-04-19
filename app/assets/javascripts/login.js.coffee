@@ -31,9 +31,7 @@ App.Views.LoginView = Backbone.View.extend(
   save:(data, status, response)->
     @model.set({token : data.token, email : data.email})
     @model.save()
-    App.router.navigate('/app/demo/base', {
-          trigger: true
-        })
+    App.router.navigate('/app/demo/base', {trigger: true})
 
   serialize: ->
     @model.toJSON()

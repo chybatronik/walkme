@@ -34,7 +34,7 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 
 gem 'haml'
 gem "rails-backbone"
-
+ gem "introjs-rails"
 
 gem "stripe"
 gem "stripe_event"

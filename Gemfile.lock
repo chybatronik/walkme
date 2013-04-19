@@ -99,6 +99,9 @@ GEM
     hike (1.2.1)
     hominid (3.0.5)
     i18n (0.6.1)
+    introjs-rails (0.3.0)
+      sass-rails (>= 3.2)
+      thor (~> 0.14)
     journey (1.0.4)
     jquery-datatables-rails (1.11.2)
       jquery-rails
@@ -228,6 +231,7 @@ DEPENDENCIES
   google_visualr (>= 2.1.2)
   haml
   hominid (>= 3.0.5)
+  introjs-rails
   jquery-datatables-rails (>= 1.11.2)
   jquery-rails
   launchy (>= 2.2.0)

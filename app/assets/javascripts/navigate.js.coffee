@@ -28,6 +28,7 @@ App.Views.NavigationView = Backbone.View.extend(
 
   play:(ev)->
     ev.preventDefault()
+    send_content_script("play")
     # chrome.storage.sync.get('tasks', (storage)=>
     #   console.log "get tasks", storage
     #   stored = JSON.parse(storage.tasks)
@@ -86,6 +87,15 @@ App.Views.NavigationView = Backbone.View.extend(
 
 send_content_script = (action, stored=null) =>
   console.log "send_content_script", action
+
+  switch action
+    when "start"
+      App.Actions.start()
+    when "stop"
+      App.Actions.stop()
+    when "play"
+      App.Actions.play()
+
   ###chrome.tabs.query({"status":"complete","windowId":chrome.windows.WINDOW_ID_CURRENT,"active":true}, 
     (tabs)=>
       console.log(JSON.stringify(tabs[0]))

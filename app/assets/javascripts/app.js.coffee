@@ -6,6 +6,8 @@
 #= require backbone.layoutmanager
 #= require backbone.localStorage
 #= require global
+#= require page
+#= require introjs
 
 App.Models.MainPage = Backbone.Model.extend({})
 

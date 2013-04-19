@@ -7,7 +7,7 @@ _.templateSettings =
 @App =
   router: null
   player: null
-  playlist: null
+  Actions: {}
   Views: {}
   Models: {}
   Collections: {}
