@@ -6,7 +6,9 @@
   %script#container-fluid{ :type => 'text/template' }
     .container-fluid
       .row-fluid
-        .content.span5.pull-right
+        .example.span7
+          = render 'app/example'
+        .content.span5.row.affix{:style=>"margin-left:500px"}
           %p
             Hello WORLD 2
     #footer.inactive
