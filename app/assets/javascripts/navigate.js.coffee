@@ -29,19 +29,11 @@ App.Views.NavigationView = Backbone.View.extend(
   play:(ev)->
     ev.preventDefault()
     send_content_script("play")
-    # chrome.storage.sync.get('tasks', (storage)=>
-    #   console.log "get tasks", storage
-    #   stored = JSON.parse(storage.tasks)
-    #   console.log "get length", stored.length
-    #   send_content_script("play", storage.tasks)
-    # )
+
   
   clear_data:(ev)->
     ev.preventDefault()
-    ###chrome.storage.sync.set({'tasks': JSON.stringify([])}, =>
-      console.log('clear_data')
-      @.render()
-    )###
+    send_content_script("clear")
 
   help:(ev)->
     ev.preventDefault()
@@ -66,21 +58,7 @@ App.Views.NavigationView = Backbone.View.extend(
     console.log "logout", ev.target, $(ev.target).attr('id')
     App.Models.user.destroy()
     App.router.navigate('/app/demo', {trigger: true})
-    ###
-    $('.navigation').empty()
-    login()###
 
-  ###render:->
-    chrome.storage.sync.get('tasks', (storage)=>
-      console.log "get tasks", storage
-      if storage.tasks?
-        stored = JSON.parse(storage.tasks)
-        console.log "get length", stored.length
-      else
-        stored = []
-      this.$el.html(this.template({name: user.email, tasks:stored}));
-      $('.navigation').empty().append(this.el)
-    )###
   serialize: ->
     @user.toJSON()
 )
@@ -95,13 +73,9 @@ send_content_script = (action, stored=null) =>
       App.Actions.stop()
     when "play"
       App.Actions.play()
-
-  ###chrome.tabs.query({"status":"complete","windowId":chrome.windows.WINDOW_ID_CURRENT,"active":true}, 
-    (tabs)=>
-      console.log(JSON.stringify(tabs[0]))
-      console.log(tabs[0].id)
-      if stored
-        chrome.tabs.sendMessage(tabs[0].id, {action : action, stored: stored }) 
-      else
-        chrome.tabs.sendMessage(tabs[0].id, {action : action}) 
-  )###
+    when "clear"
+      console.log "clear"
+      list_task = new App.Collections.TaskCollection()
+      list_task.fetch({async:false})
+      list_task.reset()
+      console.log list_task
