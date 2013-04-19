@@ -46,22 +46,28 @@
     remove_one("lib/bootstrap/css/bootstrap.min.css")
     remove_one("lib/bootstrap/css/bootstrap-responsive.min.css")
 
-  save_task = (name, text, current_element)=>
-    console.log "save_task", name, text, current_element
-    task = new App.Models.Task()
+  save_task = (action, name, text, current_element)=>
+    console.log "save_task", action, name, text, current_element
+    ###task = new App.Models.Task()
     task.set(
       action : "task"
       name  : name
       text  : text
       object: current_element
-        )
+        )###
     list_task = new App.Collections.TaskCollection()
-    list_task.fetch()
-    list_task.add(task)
+    list_task.fetch({async:false})
+    list_task.create(
+      action : action
+      name  : name
+      text  : text
+      object: current_element
+      )
+    console.log "list_task", list_task
     
   get_task = =>
     list_task = new App.Collections.TaskCollection()
-    list_task.fetch()
+    list_task.fetch({async:false})
     list_task
 
   click = (e)=>
@@ -81,7 +87,7 @@
       $(a).popover('show')
 
       console.log $(a).attr('data-intro'), $(a).attr('data-step')
-      save_task("task", name, text, current_element)
+      save_task("task", name, text, a)
       ###chrome.extension.sendMessage(
         action : "task"
         name  : name
@@ -122,8 +128,8 @@
     $("body").off("click",  click )
     removes()
     #load_one_script("lib/intro/intro.min.js")
-    #load_one_style("lib/intro/introjs-ie.min.css")
-    #load_one_style("lib/intro/introjs.min.css")
+    load_one_style("lib/intro/introjs-ie.min.css")
+    load_one_style("lib/intro/introjs.min.css")
     $(".popover").remove();
     $("*").removeAttr("data-step")
     $("*").removeAttr("data-intro")
@@ -131,13 +137,16 @@
     stored = get_task()
     console.log "stored", stored
     count = 0 
-    for elem in stored
+    for elem in stored.models
       count += 1
-      a = elem.object
-      $(a).attr('data-intro', elem.name + " -- " + elem.text)
+      console.log "elem", elem
+      a = elem.get("object")
+      console.log "a", a
+      $(a).attr('data-intro', elem.get("name") + " -- " + elem.get("text"))
       $(a).attr('data-step', count)
       
     introJs().start()
+    console.log "action play"
 
   form_create =  """
       <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 360px;top: 25%;">
