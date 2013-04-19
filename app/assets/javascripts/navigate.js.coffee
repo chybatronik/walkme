@@ -6,7 +6,7 @@ App.Views.NavigationView = Backbone.View.extend(
     _.bindAll @
     console.log "options", options
     @user = options.user
-    console.log "initialize NavigationView", @user
+    console.log "initialize NavigationView", @user.get("token")
     @.workspace()
 
   events:
@@ -65,7 +65,9 @@ App.Views.NavigationView = Backbone.View.extend(
 
   logout:(ev)->
     console.log "logout", ev.target, $(ev.target).attr('id')
-    ###@user.delete()
+    App.Models.user.destroy()
+    App.router.navigate('/app/demo', {trigger: true})
+    ###
     $('.navigation').empty()
     login()###
 
@@ -81,7 +83,9 @@ App.Views.NavigationView = Backbone.View.extend(
       $('.navigation').empty().append(this.el)
     )###
   serialize: ->
-    @user
+    console.log JSON.stringify({user:@user})
+    console.log @user
+    @user.toJSON()
 )
 
 send_content_script = (action, stored=null) =>

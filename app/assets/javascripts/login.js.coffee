@@ -1,7 +1,7 @@
 ###########
 
 App.Models.User = Backbone.Model.extend(
-  localStorage: new Backbone.LocalStorage("App_Model_User")
+  localStorage: new Backbone.LocalStorage("App_Model_User")        
 )
 ###########
 
