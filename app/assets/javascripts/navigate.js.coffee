@@ -4,9 +4,7 @@ App.Views.NavigationView = Backbone.View.extend(
 
   initialize:(options)->   
     _.bindAll @
-    console.log "options", options
     @user = options.user
-    console.log "initialize NavigationView", @user.get("token")
     @.workspace()
 
   events:
@@ -83,8 +81,6 @@ App.Views.NavigationView = Backbone.View.extend(
       $('.navigation').empty().append(this.el)
     )###
   serialize: ->
-    console.log JSON.stringify({user:@user})
-    console.log @user
     @user.toJSON()
 )
 

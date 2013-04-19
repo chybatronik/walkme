@@ -32,10 +32,9 @@ App.WalkMeRouter = Backbone.Router.extend(
     "app/demo/base": "base"
 
   index: ->
-    console.log  "index"   
+    console.log  "url index"   
     App.Models.user = new App.Models.User({id: 1})
     App.Models.user.fetch({async:false})
-    #console.log App.Models.user.get(0).token
     if not App.Models.user.get("token")?
       App.Views.mainLayout.setView(".content",
         new App.Views.LoginView(model:App.Models.user)
@@ -44,11 +43,9 @@ App.WalkMeRouter = Backbone.Router.extend(
       App.router.navigate('/app/demo/base', {trigger: true})
 
   base: ->
-    console.log  "base"  
+    console.log  "url base"  
     App.Models.user.fetch({async:false}) 
-    console.log App.Models.user
     if App.Models.user?
-      console.log "base", App.Models.user.get("token")
       App.Views.mainLayout.setView(".content",
         new App.Views.NavigationView(user:App.Models.user)
       ).render()
