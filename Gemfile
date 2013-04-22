@@ -9,6 +9,7 @@ group :assets do
   gem "execjs"
 end
 
+gem 'sqlite3'
 gem 'mysql2'
 
 gem 'jquery-rails'

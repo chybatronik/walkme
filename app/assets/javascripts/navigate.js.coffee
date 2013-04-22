@@ -5,7 +5,6 @@ App.Views.NavigationView = Backbone.View.extend(
   initialize:(options)->   
     _.bindAll @
     @user = options.user
-    @.workspace()
 
   events:
     "click #help": "help"
@@ -39,14 +38,20 @@ App.Views.NavigationView = Backbone.View.extend(
     ev.preventDefault()
 
   workspace:(ev=null)->
+    console.log "workspace"
     if ev?
+      #ev.preventDefault()
       console.log "workspace", ev.target, $(ev.target).attr('id')
 
     task_collection = new App.Collections.TaskCollection()
-    task_collection.fetch()
+    task_collection.fetch({async:false})
+    console.log "task_collection", task_collection
     App.Views.mainLayout.setView(".content #workspace-panel .context",
         new App.Views.TaskCollectionView(collection:task_collection)
       ).render()
+
+  afterRender:->
+    $("#workspace")[0].click()
 
   setting:(ev)->
     console.log "setting", ev.target, $(ev.target).attr('id')

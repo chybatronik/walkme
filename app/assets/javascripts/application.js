@@ -17,6 +17,11 @@
 //= require dataTables/jquery.dataTables.bootstrap
 //= require jquery.readyselector
 //= require jquery.externalscript
+//= require underscore
+//= require backbone
+//= require backbone.layoutmanager
+//= require backbone.localStorage
+//= require introjs
 //= require_tree .
 
 $('document').ready(function() {

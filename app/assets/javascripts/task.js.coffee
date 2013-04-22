@@ -24,12 +24,18 @@ App.Views.TaskCollectionView = Backbone.View.extend(
 
   initialize:()->   
     _.bindAll @
+    @collection.on("change reset add remove", =>
+      console.log "@collection beforender"
+      @beforeRender()
+    , @)
 
   beforeRender:->
-  	@collection.each ((model) ->
+    console.log "beforeRender", @collection
+    
+    @collection.each ((model) ->
       @insertView("ul", new App.Views.TaskView(
         model: new App.Models.Task(model)
-      ))
+      )).render()
     ), this
 
   serialize: ->

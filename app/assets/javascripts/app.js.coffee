@@ -1,13 +1,4 @@
-#= require jquery
-#= require jquery_ujs
-#= require bootstrap
-#= require underscore
-#= require backbone
-#= require backbone.layoutmanager
-#= require backbone.localStorage
 #= require global
-#= require page
-#= require introjs
 
 App.Models.MainPage = Backbone.Model.extend({})
 

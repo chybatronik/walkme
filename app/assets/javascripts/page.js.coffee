@@ -73,8 +73,7 @@
   click = (e)=>
     e.preventDefault()
     if $(e.target)[0].id == "save_send_data"
-      console.log "save_send_data"
-      
+      console.log "save_send_data"     
 
       name = $("#inputName").val()
       text = $("#inputText").val()
