@@ -31,7 +31,6 @@ App.Views.TaskCollectionView = Backbone.View.extend(
 
   beforeRender:->
     console.log "beforeRender", @collection
-    
     @collection.each ((model) ->
       @insertView("ul", new App.Views.TaskView(
         model: new App.Models.Task(model)

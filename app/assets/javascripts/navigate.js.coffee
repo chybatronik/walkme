@@ -82,5 +82,8 @@ send_content_script = (action, stored=null) =>
       console.log "clear"
       list_task = new App.Collections.TaskCollection()
       list_task.fetch({async:false})
-      list_task.reset()
+      _.each(list_task.models, (model)=>
+        console.log "each list_task", model
+        model.destroy()
+      )
       console.log list_task
