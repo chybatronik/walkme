@@ -6,4 +6,3 @@
 # IT IS UNLIKELY THAT YOU WILL NEED TO CHANGE THIS FILE
 #
 #=require_tree ./
-#= require_tree ../../app/assets/javascripts
