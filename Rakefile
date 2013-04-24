@@ -4,7 +4,7 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-RailsPrelaunchSignup::Application.load_tasks
+WalkMe::Application.load_tasks
 
 begin
   require 'jasmine'

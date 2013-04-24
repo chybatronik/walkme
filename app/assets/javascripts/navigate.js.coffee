@@ -12,27 +12,6 @@ App.Views.NavigationView = Backbone.View.extend(
     "click #setting": "setting"
     "click #publish": "publish"
     "click #logout": "logout"
-    "click #start": "start"
-    "click #stop": "stop"
-    "click #play": "play"
-    "click #clear_data": "clear_data"
-
-  start:(ev)->
-    ev.preventDefault()
-    send_content_script("start")
-
-  stop:(ev)->
-    ev.preventDefault()
-    send_content_script("stop")
-
-  play:(ev)->
-    ev.preventDefault()
-    send_content_script("play")
-
-  
-  clear_data:(ev)->
-    ev.preventDefault()
-    send_content_script("clear")
 
   help:(ev)->
     ev.preventDefault()
@@ -67,23 +46,3 @@ App.Views.NavigationView = Backbone.View.extend(
   serialize: ->
     @user.toJSON()
 )
-
-send_content_script = (action, stored=null) =>
-  console.log "send_content_script", action
-
-  switch action
-    when "start"
-      App.Actions.start()
-    when "stop"
-      App.Actions.stop()
-    when "play"
-      App.Actions.play()
-    when "clear"
-      console.log "clear"
-      list_task = new App.Collections.TaskCollection()
-      list_task.fetch({async:false})
-      array = list_task.toArray()
-      for model in array
-        console.log "each list_task", model
-        model.destroy()
-      console.log list_task

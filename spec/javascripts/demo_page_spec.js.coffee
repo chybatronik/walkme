@@ -1,5 +1,4 @@
 # use require to load any .js file available to the asset pipeline
-#= require application
 
 describe "DemoPage", ->
   list_task = {}
@@ -7,7 +6,7 @@ describe "DemoPage", ->
   after_length = 0
 
   beforeEach ->
-    list_task = new App.Collections.TaskCollection()
+    list_task = new WalkMe.Collections.TaskCollection()
     list_task.fetch({async:false})
     before_length = list_task.length
     list_task.create({})

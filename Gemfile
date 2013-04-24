@@ -7,6 +7,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem "therubyracer"
   gem "execjs"
+  gem 'haml_coffee_assets'
 end
 
 gem 'sqlite3'
@@ -39,8 +40,9 @@ gem "better_errors", ">= 0.6.0", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
 
 gem 'haml'
-gem "rails-backbone"
- gem "introjs-rails"
+gem 'underscore-rails'
+gem 'backbone-on-rails'
+gem "introjs-rails"
 
 gem "stripe"
 gem "stripe_event"

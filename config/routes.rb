@@ -1,4 +1,4 @@
-RailsPrelaunchSignup::Application.routes.draw do
+WalkMe::Application.routes.draw do
   get "app/demo"
 
   mount StripeEvent::Engine => '/stripe'

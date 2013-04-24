@@ -21,6 +21,16 @@
 
   %script#task-list{ :type => 'text/template' }
     %ul
+    .actions
+      .btn-group.pull-left
+        %a.btn.btn-info{:href=>"#", :id=>"start"}
+          start
+        %a.btn.btn-info{:href=>"#", :id=>"stop"}
+          stop
+        %a.btn.btn-info{:href=>"#", :id=>"play"}
+          play
+        %a.btn.btn-info{:href=>"#", :id=>"clear_data"}
+          clear_data
 
   %script#navigation_view{ :type => 'text/template' }
     .row-fluid
@@ -54,16 +64,6 @@
               %p 
                 I'm in Section 1.
                 %table.table.table-striped
-            .actions
-              .btn-group.pull-left
-                %a.btn.btn-info{:href=>"#", :id=>"start"}
-                  start
-                %a.btn.btn-info{:href=>"#", :id=>"stop"}
-                  stop
-                %a.btn.btn-info{:href=>"#", :id=>"play"}
-                  play
-                %a.btn.btn-info{:href=>"#", :id=>"clear_data"}
-                  clear_data
           .tab-pane{:id=>"setting-panel"}
             %p 
               I'm in Section 2.
