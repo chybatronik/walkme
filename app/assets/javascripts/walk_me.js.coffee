@@ -4,7 +4,9 @@ window.WalkMe =
   Views: {}
   Routers: {}
   Actions: {}
-  initialize: -> alert 'Hello from Backbone!'
+  initialize: -> 
+  	new WalkMe.Routers.Tasks()
+    Backbone.history.start()
 
 _.templateSettings =
   interpolate: /\{\{\=(.+?)\}\}/g

@@ -17,6 +17,7 @@
 //= require dataTables/jquery.dataTables.bootstrap
 //= require jquery.readyselector
 //= require jquery.externalscript
+//= require hamlcoffee
 //= require underscore
 //= require backbone
 //= require backbone.layoutmanager
