@@ -1,0 +1,4 @@
+<ul class="inline">
+  <li>{{= name}}</li>
+  <li>{{= text}}</li>
+</ul>

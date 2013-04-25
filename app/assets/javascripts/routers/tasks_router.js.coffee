@@ -5,19 +5,17 @@ class WalkMe.Routers.Tasks extends Backbone.Router
     
   index: ->
     console.log  "url index"   
-    App.Models.user = new App.Models.User({id: 1})
-    App.Models.user.fetch({async:false})
-    if not App.Models.user.get("token")?
-      App.Views.mainLayout.setView(".content",
-        new App.Views.LoginView(model:App.Models.user)
-      ).render()
+    WalkMe.Models.user = new WalkMe.Models.User({id: 1})
+    WalkMe.Models.user.fetch({async:false})
+    if not WalkMe.Models.user.get("token")?
+      login = new WalkMe.Views.UsersLogin(model:WalkMe.Models.user)
+      $("#demo-widget").append(login.render().el)
     else
-      App.router.navigate('/app/demo/base', {trigger: true})
+      WalkMe.Routers.app.navigate('/app/demo/base', {trigger: true})
 
   base: ->
     console.log  "url base"  
-    App.Models.user.fetch({async:false}) 
-    if App.Models.user?
-      App.Views.mainLayout.setView(".content",
-        new App.Views.NavigationView(user:App.Models.user)
-      ).render()
+    WalkMe.Models.user.fetch({async:false}) 
+    if WalkMe.Models.user?
+      WalkMe.Views.navig_view = new WalkMe.Views.Navigate(model:WalkMe.Models.user)
+      $("#demo-widget").empty().append(WalkMe.Views.navig_view.render().el)

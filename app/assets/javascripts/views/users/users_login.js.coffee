@@ -1,13 +1,6 @@
-###########
+class WalkMe.Views.UsersLogin extends Backbone.View
 
-App.Models.User = Backbone.Model.extend(
-  localStorage: new Backbone.LocalStorage("App_Model_User")        
-)
-###########
-
-App.Views.LoginView = Backbone.View.extend(
-  manage: true
-  template: '#login-form'
+  template: JST['users/login']
 
   initialize:()->   
     _.bindAll @
@@ -31,10 +24,10 @@ App.Views.LoginView = Backbone.View.extend(
   save:(data, status, response)->
     @model.set({token : data.token, email : data.email})
     @model.save()
-    App.router.navigate('/app/demo/base', {trigger: true})
+    WalkMe.Routers.app.navigate('/app/demo/base', {trigger: true})
 
-  serialize: ->
-    @model.toJSON()
-)
+  render:()->
+    $(@el).html(@template())
+    this
 
-###########
+

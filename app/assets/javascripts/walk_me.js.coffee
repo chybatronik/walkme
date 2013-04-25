@@ -5,8 +5,8 @@ window.WalkMe =
   Routers: {}
   Actions: {}
   initialize: -> 
-  	new WalkMe.Routers.Tasks()
-    Backbone.history.start()
+    WalkMe.Routers.app = new WalkMe.Routers.Tasks()
+    Backbone.history.start pushState: true
 
 _.templateSettings =
   interpolate: /\{\{\=(.+?)\}\}/g
