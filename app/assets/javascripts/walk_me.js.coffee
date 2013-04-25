@@ -14,3 +14,7 @@ _.templateSettings =
   
 $(document).ready ->
   WalkMe.initialize()
+  $("#walkme").on("click",  (e)=>
+    console.log "click walkme"
+    $("#demo-widget").popover('toggle')
+  )
