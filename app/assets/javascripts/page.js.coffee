@@ -113,17 +113,17 @@
       is_show_modal = false
 
 
-  App.Actions.start = =>
+  WalkMe.Actions.start = =>
     $("body").on("click",  click )
     loads()
     console.log "page chrome.extension start"
 
-  App.Actions.stop = =>
+  WalkMe.Actions.stop = =>
     $("body").off("click",  click )
     removes()
     console.log "page chrome.extension stop"
 
-  App.Actions.play = =>
+  WalkMe.Actions.play = =>
     $("body").off("click",  click )
     removes()
     #load_one_script("lib/intro/intro.min.js")
