@@ -55,7 +55,7 @@
       text  : text
       object: current_element
         )###
-    list_task = new App.Collections.TaskCollection()
+    list_task = new WalkMe.Collections.Tasks()
     list_task.fetch({async:false})
     list_task.create(
       action : action
@@ -66,7 +66,7 @@
     console.log "list_task", list_task
     
   get_task = =>
-    list_task = new App.Collections.TaskCollection()
+    list_task = new WalkMe.Collections.Tasks()
     list_task.fetch({async:false})
     list_task
 

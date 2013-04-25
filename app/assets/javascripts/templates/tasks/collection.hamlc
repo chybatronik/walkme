@@ -1,11 +1,11 @@
 .main
 .actions
   .btn-group.pull-left
-    %a.btn.btn-info{:href=>"#", :id=>"start"}
+    %a.btn.btn-info.start{:id=>"start"}
       start
-    %a.btn.btn-info{:href=>"#", :id=>"stop"}
+    %a.btn.btn-info{:id=>"stop"}
       stop
-    %a.btn.btn-info{:href=>"#", :id=>"play"}
+    %a.btn.btn-info{:id=>"play"}
       play
-    %a.btn.btn-info{:href=>"#", :id=>"clear_data"}
+    %a.btn.btn-info{:id=>"clear_data"}
       clear_data

@@ -16,7 +16,7 @@ class WalkMe.Routers.Tasks extends Backbone.Router
   index: ->
     console.log  "url index"  
     WalkMe.Models.user = new WalkMe.Models.User({id: 1})
-    
+
     #for demo page
     WalkMe.Models.user.set("token", "token")
     WalkMe.Models.user.set("email", "email@email.demo")

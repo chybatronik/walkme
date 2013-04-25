@@ -3,7 +3,7 @@ class WalkMe.Views.Navigate extends Backbone.View
   template: _.template(JST['navigate']())
 
   initialize:->
-    _.bindAll @
+    _.bindAll @, "render"
     @.$el.append(@template(@model.toJSON()))
 
   render: ->
