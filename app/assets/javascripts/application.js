@@ -33,6 +33,14 @@
 
 $('document').ready(function() {
   
+  var $popover = $("a[rel=popover]").popover({
+    trigger: "click"
+  }).click(function(e) {
+      e.preventDefault(); 
+  }).on("hidden", function(e) {
+      alert("hidden");
+  });
+
   // use AJAX to submit the "request invitation" form
   $('#invitation_button').live('click', function() {
     var email = $('form #user_email').val();
@@ -84,11 +92,3 @@ function loadSocial() {
     }
 }
 
-//= require underscore
-//= require backbone
-//= require walk_me
-//= require_tree ../templates
-//= require_tree ./models
-//= require_tree ./collections
-//= require_tree ./views
-//= require_tree ./routers
