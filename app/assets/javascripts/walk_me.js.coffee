@@ -14,7 +14,7 @@ _.templateSettings =
   
 $(document).ready ->
   WalkMe.initialize()
-  $("#walkme").on("click",  (e)=>
+  ###$("#walkme").on("click",  (e)=>
     console.log "click walkme"
     $("#demo-widget").popover('toggle')
   )
@@ -39,10 +39,10 @@ $(document).ready ->
     console.log "clear_data"
     e.preventDefault()
     send_content_script("clear")
-  )
+  )###
 
 
-send_content_script = (action, stored=null) =>
+###send_content_script = (action, stored=null) =>
   console.log "send_content_script", action
 
   switch action
@@ -60,4 +60,4 @@ send_content_script = (action, stored=null) =>
       for model in array
         console.log "each list_task", model
         model.destroy()
-      console.log list_task
+      console.log list_task###
