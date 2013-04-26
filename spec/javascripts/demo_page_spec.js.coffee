@@ -84,7 +84,7 @@ describe "DemoPage", ->
         "name": "name3"
         "text": "text3"
         )
-      expect(tasks_view.$el.find(".inline").length).toBe(4)
+      expect(tasks_view.$el.find(".inline").length).toBe(3 + 1)
 
     it "refresh view change model",  ->
       model = collection.at(0)
@@ -99,8 +99,21 @@ describe "DemoPage", ->
 
     beforeEach ->
       user = new WalkMe.Models.User({id: 1})
+      collection = new WalkMe.Collections.Tasks()
+      collection.create(
+        "name": "name"
+        "text": "text"
+        )
+      collection.create(
+        "name": "name1"
+        "text": "text1"
+        )
       user.fetch({async:false})
-      navig_view = new WalkMe.Views.Navigate(model:user)
+      navig_view = new WalkMe.Views.Navigate(
+        model:user
+        collection:collection
+      )
+      navig_view.render()
 
     it "render", ->
-      expect(navig_view.render().el).not.toBeUndefined()
+      expect(navig_view.el).not.toBeUndefined()

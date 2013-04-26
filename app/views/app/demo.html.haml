@@ -9,11 +9,18 @@
             .arrow
             #demo-widget{:style=>"width:550px"}
         .span3.affix.bot{:id=>"affix", :style=>"margin-left:750px"}
-          %strong Need help?
-          .input-append
-            %input.span9{:type=>"text", :placeholder => "Type your question here"}
+          .row-fluid
+            %strong Need help?
+            .pull-right
+              %i.icon-chevron-up
+          .row-fluid
+            .input-append
+              %input.span9{:type=>"text", :placeholder => "Type your question here"}
 
-            %button.btn{:type=>"button"}
-              Search
+              %button.btn{:type=>"button"}
+                %i.icon-search
+                Search
+          .row-fluid.help
+            %ul
             
               

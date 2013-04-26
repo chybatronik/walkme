@@ -33,14 +33,6 @@
 
 $('document').ready(function() {
   
-  var $popover = $("a[rel=popover]").popover({
-    trigger: "click"
-  }).click(function(e) {
-      e.preventDefault(); 
-  }).on("hidden", function(e) {
-      alert("hidden");
-  });
-
   // use AJAX to submit the "request invitation" form
   $('#invitation_button').live('click', function() {
     var email = $('form #user_email').val();

@@ -24,7 +24,12 @@ class WalkMe.Routers.Tasks extends Backbone.Router
 
     #WalkMe.Models.user.fetch({async:false}) 
     if WalkMe.Models.user.get("token")?
-      WalkMe.Views.navig_view = new WalkMe.Views.Navigate(model:WalkMe.Models.user)
+      WalkMe.Collections.tasks = new WalkMe.Collections.Tasks()
+      WalkMe.Collections.tasks.fetch({async:false})
+      WalkMe.Views.navig_view = new WalkMe.Views.Navigate(
+        model:WalkMe.Models.user
+        collection:WalkMe.Collections.tasks
+      )
       $("#demo-widget").empty().append(WalkMe.Views.navig_view.render().el)
       #text = WalkMe.Views.navig_view.render().$el.html()
       #$("#demo-widget").attr('data-original-title', "name")
