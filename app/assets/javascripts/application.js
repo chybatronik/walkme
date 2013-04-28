@@ -20,9 +20,9 @@
 //= require hamlcoffee
 //= require underscore
 //= require backbone
-//= require backbone.layoutmanager
 //= require backbone.localStorage
 //= require introjs
+//= require help_bot
 //= require walk_me
 //= require_tree ./templates
 //= require_tree ./models

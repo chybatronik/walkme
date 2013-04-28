@@ -1,5 +1,12 @@
-<%= link_to "WalkMe", root_path, :class => 'brand' %>
+<%= link_to "WalkMe", root_path, :class => 'brand', :id=>"root" %>
 <ul class="nav">
+  <li><a href="#request-invite" data-toggle="modal" role="button">Request a Demo</a></li>
+  <li><a href="/features">Features</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About Us</a></li>
+  <li><a href="/extension.crx">Chrome extension</a></li>
+  <li><a href="/app/demo">Demoing</a></li>
   <% if user_signed_in? %>
     <li>
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>

@@ -83,3 +83,29 @@
      -moz-background-clip: padding;
           background-clip: padding-box;
 }
+
+.introjs-helperLayer {
+  position: absolute;
+  z-index: 9999998;
+  background-color: rgba(194, 52, 52, 0.34) !important;
+  border: 1px solid rgba(0,0,0,.5);
+  border-radius: 4px;
+  box-shadow: 0 2px 15px rgba(0,0,0,.4);
+  -webkit-transition: all 0.3s ease-out;
+     -moz-transition: all 0.3s ease-out;
+      -ms-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+
+.chardinjs-helper-layer {
+  position: absolute;
+  z-index: 9999998;
+  color: white;
+  background-color: rgba(194, 52, 52, 0.14) !important;
+  border: 1px solid rgba(0,0,0,1);
+  &.chardinjs-left { border-left: solid white 1px; margin-left: -10px; }
+  &.chardinjs-right { border-right: solid white 1px; padding-right: 10px; }
+  &.chardinjs-bottom { border-bottom: solid white 1px; padding-bottom: 10px; }
+  &.chardinjs-top { border-top: solid white 1px; padding-top: 10px; }
+}

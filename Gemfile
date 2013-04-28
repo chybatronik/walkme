@@ -8,6 +8,8 @@ group :assets do
   gem "therubyracer"
   gem "execjs"
   gem 'haml_coffee_assets'
+  #gem "chardinjs-rails"
+  gem "introjs-rails"
 end
 
 gem 'sqlite3'
@@ -43,7 +45,6 @@ gem 'haml'
 gem 'ejs'
 gem 'underscore-rails'
 gem 'backbone-on-rails'
-gem "introjs-rails"
 
 gem "stripe"
 gem "stripe_event"
