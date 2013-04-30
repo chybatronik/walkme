@@ -18,6 +18,9 @@ class WalkMe.Views.TasksCollection extends Backbone.View
     console.log "start"
     e.preventDefault()
     e.stopPropagation()
+    $(".demo-widget").hide()
+    $("#button_walkme").addClass("btn-large")
+    $("#button_walkme").text("Stop")
     send_content_script("start")
 
   stop:(e)->
