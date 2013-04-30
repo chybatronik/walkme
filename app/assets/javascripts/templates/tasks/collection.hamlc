@@ -1,12 +1,19 @@
 %table.table.table-bordered.table-striped
   %tbody.main
+  
 .actions
   .btn-group.pull-left
     %a.btn.btn-info.start{:id=>"start"}
-      start
+      %i.icon-hand-right
+      Start add
     %a.btn.btn-info{:id=>"stop"}
-      stop
+      %i.icon-stop
+      Stop add
+
+  .btn-group.pull-right
     %a.btn.btn-info{:id=>"play"}
-      play
+      %i.icon-play
+      review
     %a.btn.btn-info{:id=>"clear_data"}
-      clear_data
+      %i.icon-trash
+      clear list
