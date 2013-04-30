@@ -26,9 +26,6 @@
     .tab-content
       .tab-pane.active{:id=>"workspace-panel"}
         .main
-          %p 
-            I'm in Section 1.
-            %table.table.table-striped
       .tab-pane{:id=>"setting-panel"}
         %p 
           I'm in Section 2.

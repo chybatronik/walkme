@@ -1,7 +1,6 @@
 class WalkMe.Views.TasksCollection extends Backbone.View
 
   template: JST['tasks/collection']
-  tagName:"ol"
 
   events:
     "click #start": "start"

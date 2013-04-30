@@ -43,12 +43,14 @@ describe "DemoPage", ->
       task_view.render()
 
     it "render", ->
-      expect(task_view.render().$el.find(".inline li:first").text()).toMatch /name/
-      expect(task_view.render().$el.find(".inline li:eq(1)").text()).toMatch /text/
+      console.log task_view.render().el
+      console.log task_view.render().$el.find("td:first")
+      expect(task_view.render().$el.find("td:first").text()).toMatch /name/
+      expect(task_view.render().$el.find("td:eq(1)").text()).toMatch /text/
 
     it "change model", ->
       model.set("name", "qweqwe")
-      expect(task_view.$el.find(".inline li:first").text()).toMatch /qweqwe/
+      expect(task_view.$el.find("td:first").text()).toMatch /qweqwe/
 
   describe "TasksCollection",  ->
 
@@ -87,8 +89,8 @@ describe "DemoPage", ->
       model = collection.at(0)
       model.set("name", "000")
       model.set("text", "111")
-      expect(tasks_view.$el.find(".inline:eq(0) li:first").text()).toMatch /000/
-      expect(tasks_view.$el.find(".inline:eq(0) li:eq(1)").text()).toMatch /111/
+      expect(tasks_view.$el.find(".inline:eq(0) td:first").text()).toMatch /000/
+      expect(tasks_view.$el.find(".inline:eq(0) td:eq(1)").text()).toMatch /111/
 
   describe "View Navigate",  ->
     user = null
@@ -119,10 +121,10 @@ describe "DemoPage", ->
       expect(navig_view.el).not.toBeUndefined()
 
     it "render item",  ->
-      expect(navig_view.$el.find(".inline:eq(0) li:first").text()).toMatch /name/
-      expect(navig_view.$el.find(".inline:eq(0) li:eq(1)").text()).toMatch /text/
-      expect(navig_view.$el.find(".inline:eq(1) li:first").text()).toMatch /name1/
-      expect(navig_view.$el.find(".inline:eq(1) li:eq(1)").text()).toMatch /text1/
+      expect(navig_view.$el.find(".inline:eq(0) td:first").text()).toMatch /name/
+      expect(navig_view.$el.find(".inline:eq(0) td:eq(1)").text()).toMatch /text/
+      expect(navig_view.$el.find(".inline:eq(1) td:first").text()).toMatch /name1/
+      expect(navig_view.$el.find(".inline:eq(1) td:eq(1)").text()).toMatch /text1/
       expect(navig_view.$el.find(".inline:eq(2)").length).toBe(0)
 
     it "render item after add", ->
@@ -133,12 +135,12 @@ describe "DemoPage", ->
         )
       collection.fetch({async:false})
 
-      expect(navig_view.$el.find(".inline:eq(0) li:first").text()).toMatch /name/
-      expect(navig_view.$el.find(".inline:eq(0) li:eq(1)").text()).toMatch /text/
-      expect(navig_view.$el.find(".inline:eq(1) li:first").text()).toMatch /name1/
-      expect(navig_view.$el.find(".inline:eq(1) li:eq(1)").text()).toMatch /text1/
-      expect(navig_view.$el.find(".inline:eq(2) li:first").text()).toMatch /name2/
-      expect(navig_view.$el.find(".inline:eq(2) li:eq(1)").text()).toMatch /text2/
+      expect(navig_view.$el.find(".inline:eq(0) td:first").text()).toMatch /name/
+      expect(navig_view.$el.find(".inline:eq(0) td:eq(1)").text()).toMatch /text/
+      expect(navig_view.$el.find(".inline:eq(1) td:first").text()).toMatch /name1/
+      expect(navig_view.$el.find(".inline:eq(1) td:eq(1)").text()).toMatch /text1/
+      expect(navig_view.$el.find(".inline:eq(2) td:first").text()).toMatch /name2/
+      expect(navig_view.$el.find(".inline:eq(2) td:eq(1)").text()).toMatch /text2/
 
     it "remove item after delete_all", ->
       collection.delete_all()

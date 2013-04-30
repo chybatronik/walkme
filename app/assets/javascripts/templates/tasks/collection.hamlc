@@ -1,4 +1,5 @@
-.main
+%table.table.table-bordered.table-striped
+  %tbody.main
 .actions
   .btn-group.pull-left
     %a.btn.btn-info.start{:id=>"start"}
