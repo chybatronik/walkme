@@ -5,6 +5,9 @@
   count_task = 0
   is_show_modal = false
 
+  $('#myModal').on('hide', ->
+      console.log "assadasdasdsd HIDDEN"
+  )
   load_one_style = (name_file)=>
     style = document.createElement('link')
     style.rel = 'stylesheet'
@@ -30,7 +33,9 @@
     #load_one_script("lib/bootstrap/js/bootstrap.js")
     load_one_style("lib/bootstrap/css/bootstrap.min.css")
     load_one_style("lib/bootstrap/css/bootstrap-responsive.min.css")
-    $('body').append(form_create)
+    elem = $("#myModal")
+    if elem.length == 0
+      $('body').append(form_create)
 
 
   remove_one = (id)=>
@@ -72,8 +77,8 @@
 
   click = (e)=>
     e.preventDefault()
+    console.log "CLICK"
     if $(e.target)[0].id == "save_send_data"
-      console.log "save_send_data"     
 
       name = $("#inputName").val()
       text = $("#inputText").val()
@@ -85,7 +90,6 @@
       $(a).attr('data-content', text)
       $(a).popover('show')
 
-      console.log $(a).attr('data-intro'), $(a).attr('data-step')
       save_task("task", name, text, a)
       ###chrome.extension.sendMessage(
         action : "task"
@@ -100,7 +104,6 @@
     else
       if not is_show_modal
         count_task += 1
-        console.log "click", $(e.target).getPath(), $(e.target)[0].outerHTML;
 
         remove_one("fix.css")
         current_element = $(e.target).getPath()
@@ -116,6 +119,13 @@
   WalkMe.Actions.start = =>
     $("body").on("click",  click )
     loads()
+    $('#myModal').on('hidden', ->
+      is_show_modal = false
+      load_one_style("fix.css")
+    )
+    $('#myModal').on('show', ->
+      remove_one("fix.css")
+    )
     console.log "page chrome.extension start"
 
   WalkMe.Actions.stop = =>
