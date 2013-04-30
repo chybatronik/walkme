@@ -5,25 +5,26 @@
   count_task = 0
   is_show_modal = false
 
-  $('#myModal').on('hide', ->
-      console.log "assadasdasdsd HIDDEN"
-  )
   load_one_style = (name_file)=>
-    style = document.createElement('link')
-    style.rel = 'stylesheet'
-    style.id =  name_file
-    style.type = 'text/css'
-    style.href = "/demo/" + name_file
-    (document.head||document.documentElement).appendChild(style)
+    elem = document.getElementById(name_file)
+    if not elem
+      style = document.createElement('link')
+      style.rel = 'stylesheet'
+      style.id =  name_file
+      style.type = 'text/css'
+      style.href = "/demo/" + name_file
+      (document.head||document.documentElement).appendChild(style)
 
   load_one_script = (name_file)=>
-    D           = document
-    scriptNode  = D.createElement ('script')
-    scriptNode.type = "text/javascript"
-    scriptNode.src  = "/demo/" + name_file
-    scriptNode.id = name_file
-    targ = D.getElementsByTagName('head')[0] || D.body || D.documentElement
-    targ.appendChild (scriptNode)
+    elem = document.getElementById(name_file)
+    if not elem
+      D           = document
+      scriptNode  = D.createElement ('script')
+      scriptNode.type = "text/javascript"
+      scriptNode.src  = "/demo/" + name_file
+      scriptNode.id = name_file
+      targ = D.getElementsByTagName('head')[0] || D.body || D.documentElement
+      targ.appendChild (scriptNode)
 
   loads = =>
     load_one_style("fix.css")
@@ -77,7 +78,12 @@
 
   click = (e)=>
     e.preventDefault()
-    console.log "CLICK"
+    console.log "CLICK", $(e.target)[0].id
+    if $(e.target)[0].id == "button_walkme"
+      console.log "button_walkme"
+      $("body").off("click",  click )
+      removes()
+      return 
     if $(e.target)[0].id == "save_send_data"
 
       name = $("#inputName").val()
