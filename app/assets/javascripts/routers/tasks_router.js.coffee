@@ -22,7 +22,6 @@ class WalkMe.Routers.Tasks extends Backbone.Router
     WalkMe.Models.user.set("email", "email@email.demo")
     WalkMe.Models.user.save()
 
-    #WalkMe.Models.user.fetch({async:false}) 
     if WalkMe.Models.user.get("token")?
       WalkMe.Collections.tasks = new WalkMe.Collections.Tasks()
       WalkMe.Collections.tasks.fetch({async:false})
@@ -31,11 +30,5 @@ class WalkMe.Routers.Tasks extends Backbone.Router
         collection:WalkMe.Collections.tasks
       )
       $("#demo-widget").empty().append(WalkMe.Views.navig_view.render().el)
-      #text = WalkMe.Views.navig_view.render().$el.html()
-      #$("#demo-widget").attr('data-original-title', "name")
-      #$("#demo-widget").attr('data-html', true)
-      ##$("#demo-widget").attr('data-placement', "bottom")
-      #$("#demo-widget").attr('data-content', text)
-      #$("#demo-widget").popover('show');
     else
       WalkMe.Routers.app.navigate('/app/demo/login', {trigger: true})
