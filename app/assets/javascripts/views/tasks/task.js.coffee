@@ -16,10 +16,21 @@ class WalkMe.Views.Task extends Backbone.View
     @model.on("change", @render, @)
     @model.on("remove", @delete, @)
 
-  save:->
-    name = $(".name_edit").attr("value")
-    text = $(".text_edit").text()
-    console.log name, text, 
+  cancel:(e)->
+    e.preventDefault()
+    $(@el).html(@template(@model.toJSON()))
+    this
+
+  save:(e)->
+    e.preventDefault()
+
+    name = @.$el.find("#name").val()
+    text = @.$el.find("#text").val()
+    
+    @model.set("name", name)
+    @model.set("text", text)
+    @model.save()
+
   show_edit_form:->
     $(@el).html(@edit_task(@model.toJSON()))
     this

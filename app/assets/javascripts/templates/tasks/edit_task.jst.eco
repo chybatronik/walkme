@@ -1,5 +1,5 @@
-<td class="span2"><input class="span12 name_edit" type="text" value={{= name}}></input></td>
-<td class="span4"><textarea class="span12 text_edit" >{{= text}}</textarea></td>
+<td class="span2"><input class="span12" id="name"  type="text" value={{= name}}></input></td>
+<td class="span4"><textarea class="span12 " id="text" >{{= text}}</textarea></td>
 <td class="pull-right">
     <div class="btn-group">
         <a class="btn" href="#" id="save"><i class="icon-ok"></i></a>
