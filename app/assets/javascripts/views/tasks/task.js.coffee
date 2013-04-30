@@ -6,7 +6,11 @@ class WalkMe.Views.Task extends Backbone.View
   initialize:->
     _.bindAll @
     @model.on("change", @render, @)
+    @model.on("remove", @delete, @)
 
+  delete:->
+    @.remove()
+    
   render: ->
     $(@el).html(@template(@model.toJSON()))
     this

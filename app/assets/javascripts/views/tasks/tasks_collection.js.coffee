@@ -26,6 +26,7 @@ class WalkMe.Views.TasksCollection extends Backbone.View
     console.log "stop"
     e.preventDefault()
     e.stopPropagation()
+    @collection.fetch({async:false})
     send_content_script("stop")
 
   play:(e)->
@@ -37,7 +38,8 @@ class WalkMe.Views.TasksCollection extends Backbone.View
   clear_data:(e)->
     e.preventDefault()
     e.stopPropagation()
-    send_content_script("clear")
+    #send_content_script("clear")
+    @collection.delete_all()
 
   render: ->
     #@.$el.append(@template())
@@ -58,12 +60,4 @@ send_content_script = (action, stored=null) =>
       WalkMe.Actions.stop()
     when "play"
       WalkMe.Actions.play()
-    when "clear"
-      console.log "clear"
-      list_task = new WalkMe.Collections.Tasks()
-      list_task.fetch({async:false})
-      array = list_task.toArray()
-      for model in array
-        console.log "each list_task", model
-        model.destroy()
-      console.log list_task
+    

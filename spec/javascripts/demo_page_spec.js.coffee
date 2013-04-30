@@ -25,10 +25,7 @@ describe "DemoPage", ->
       expect(list_task.models.length).toEqual(after_length)
 
     it "delete models at collection", ->
-      array = list_task.toArray()
-      for model in array
-        #console.log "each list_task", model
-        model.destroy()
+      list_task.delete_all()
       
       list_task.fetch({async:false})
 
@@ -94,12 +91,15 @@ describe "DemoPage", ->
       expect(tasks_view.$el.find(".inline:eq(0) li:eq(1)").text()).toMatch /111/
 
   describe "View Navigate",  ->
-    user = ""
-    navig_view = ""
+    user = null
+    navig_view = null
+    collection = null
 
     beforeEach ->
       user = new WalkMe.Models.User({id: 1})
       collection = new WalkMe.Collections.Tasks()
+      collection.fetch({async:false})
+      collection.delete_all()
       collection.create(
         "name": "name"
         "text": "text"
@@ -117,3 +117,30 @@ describe "DemoPage", ->
 
     it "render", ->
       expect(navig_view.el).not.toBeUndefined()
+
+    it "render item",  ->
+      expect(navig_view.$el.find(".inline:eq(0) li:first").text()).toMatch /name/
+      expect(navig_view.$el.find(".inline:eq(0) li:eq(1)").text()).toMatch /text/
+      expect(navig_view.$el.find(".inline:eq(1) li:first").text()).toMatch /name1/
+      expect(navig_view.$el.find(".inline:eq(1) li:eq(1)").text()).toMatch /text1/
+      expect(navig_view.$el.find(".inline:eq(2)").length).toBe(0)
+
+    it "render item after add", ->
+      temp_collection = new WalkMe.Collections.Tasks()
+      temp_collection.create(
+        "name": "name2"
+        "text": "text2"
+        )
+      collection.fetch({async:false})
+
+      expect(navig_view.$el.find(".inline:eq(0) li:first").text()).toMatch /name/
+      expect(navig_view.$el.find(".inline:eq(0) li:eq(1)").text()).toMatch /text/
+      expect(navig_view.$el.find(".inline:eq(1) li:first").text()).toMatch /name1/
+      expect(navig_view.$el.find(".inline:eq(1) li:eq(1)").text()).toMatch /text1/
+      expect(navig_view.$el.find(".inline:eq(2) li:first").text()).toMatch /name2/
+      expect(navig_view.$el.find(".inline:eq(2) li:eq(1)").text()).toMatch /text2/
+
+    it "remove item after delete_all", ->
+      collection.delete_all()
+      expect(navig_view.$el.find(".inline").length).toBe(0)
+
