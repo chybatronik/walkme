@@ -72,6 +72,7 @@ GEM
       cucumber (>= 1.2.0)
       nokogiri (>= 1.5.0)
       rails (~> 3.0)
+    daemons (1.1.9)
     database_cleaner (0.9.1)
     debug_inspector (0.0.2)
     devise (2.2.3)
@@ -90,6 +91,7 @@ GEM
       launchy (~> 2.1)
       mail (~> 2.2)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -220,6 +222,13 @@ GEM
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    thin-rails (1.0.1)
+      rack
+      thin
     thor (0.18.1)
     tilt (1.3.6)
     treetop (1.4.12)
@@ -276,5 +285,6 @@ DEPENDENCIES
   stripe
   stripe_event
   therubyracer
+  thin-rails
   uglifier (>= 1.0.3)
   underscore-rails

@@ -48,3 +48,5 @@ gem 'backbone-on-rails'
 
 gem "stripe"
 gem "stripe_event"
+
+gem "thin-rails"
