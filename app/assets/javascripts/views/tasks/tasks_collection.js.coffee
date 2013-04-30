@@ -16,7 +16,6 @@ class WalkMe.Views.TasksCollection extends Backbone.View
     
   start:(e)->
     console.log "start"
-    #e.preventDefault()
     e.preventDefault()
     e.stopPropagation()
     send_content_script("start")
