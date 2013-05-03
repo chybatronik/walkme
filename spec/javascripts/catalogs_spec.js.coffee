@@ -25,7 +25,7 @@ describe "Catalog", ->
       expect(catalogs.models.length).toEqual(after_length)
 
     it "delete models at collection", ->
-      catalogs.delete_all()
+      catalogs.delete_all({wait:true})
       
       catalogs.fetch({async:false})
 
@@ -149,11 +149,9 @@ describe "Catalog", ->
       collection.delete_all()
       collection.create(
         "name": "name"
-        "id":"1"
         )
       collection.create(
         "name": "name1"
-        "id":"2"
         )
       
       navig_view = new WalkMe.Views.Navigate(

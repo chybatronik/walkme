@@ -5,8 +5,8 @@ class WalkMe.Collections.Catalogs extends Backbone.Collection
   #localStorage: new Backbone.LocalStorage("App_Collections_Catalogs")  
   model: WalkMe.Models.Catalog
 
-  delete_all:()->
+  delete_all:(options)->
     array = @toArray()
     for model in array
-      model.destroy()
+      model.destroy(options)
 
