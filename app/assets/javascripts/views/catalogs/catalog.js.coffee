@@ -25,10 +25,10 @@ class WalkMe.Views.Catalog extends Backbone.View
     e.preventDefault()
 
     name = @.$el.find("#name").val()
-    text = @.$el.find("#text").val()
+    #text = @.$el.find("#text").val()
     
     @model.set("name", name)
-    @model.set("text", text)
+    #@model.set("text", text)
     @model.save()
 
   show_edit_form:->

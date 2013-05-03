@@ -8,7 +8,7 @@ class WalkMe.Views.CatalogsCollection extends Backbone.View
   initialize: ->
     _.bindAll @
     @collection.on('reset', @render, this)
-    @collection.on('add', @addOneTask, this)
+    @collection.on('add', @addOneCatalog, this)
     @.$el.append(@template())
     
   clear_data:(e)->
@@ -19,11 +19,11 @@ class WalkMe.Views.CatalogsCollection extends Backbone.View
 
   render: ->
     #@.$el.append(@template())
-    @collection.each(@addOneTask, @)   
+    @collection.each(@addOneCatalog, @)   
     @
 
-  addOneTask:(model)->
-    task_vew = new WalkMe.Views.Task(model:model)
-    @.$el.find(".main").append(task_vew.render().el)
+  addOneCatalog:(model)->
+    catalog_vew = new WalkMe.Views.Catalog(model:model)
+    @.$el.find(".main").append(catalog_vew.render().el)
 
     

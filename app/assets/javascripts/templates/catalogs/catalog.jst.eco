@@ -1,4 +1,4 @@
-<td class="span2">{{= name}}</td>
+<td class="span6">{{= name}}</td>
 <td class="pull-right">
     <div class="btn-group">
         <a class="btn btn-mini" href="#" id="edit"><i class="icon-pencil"></i></a>

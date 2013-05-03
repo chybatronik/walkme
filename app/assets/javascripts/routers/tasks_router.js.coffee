@@ -23,11 +23,17 @@ class WalkMe.Routers.Tasks extends Backbone.Router
     WalkMe.Models.user.save()
 
     if WalkMe.Models.user.get("token")?
-      WalkMe.Collections.tasks = new WalkMe.Collections.Tasks()
-      WalkMe.Collections.tasks.fetch({async:false})
+      WalkMe.Collections.catalogs = new WalkMe.Collections.Catalogs()
+      WalkMe.Collections.catalogs.fetch({async:false})
+      WalkMe.Collections.catalogs.create(
+        "name":"name1"
+        )
+      WalkMe.Collections.catalogs.create(
+        "name":"name2"
+        )
       WalkMe.Views.navig_view = new WalkMe.Views.Navigate(
         model:WalkMe.Models.user
-        collection:WalkMe.Collections.tasks
+        collection:WalkMe.Collections.catalogs
       )
       $("#demo-widget").empty().append(WalkMe.Views.navig_view.render().el)
     else
