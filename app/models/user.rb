@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   after_create :add_user_to_mailchimp unless Rails.env.test?
   before_destroy :remove_user_from_mailchimp unless Rails.env.test?
 
+  has_many :catalogs, :dependent => :destroy
+
   def update_plan(role)
     self.role_ids = []
     self.add_role(role.name)

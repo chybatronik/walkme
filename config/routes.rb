@@ -1,4 +1,7 @@
 WalkMe::Application.routes.draw do
+  resources :catalogs
+
+
   get "app/demo"
 
   mount StripeEvent::Engine => '/stripe'
