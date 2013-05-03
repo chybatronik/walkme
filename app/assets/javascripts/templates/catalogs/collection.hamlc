@@ -1,0 +1,8 @@
+%table.table.table-bordered.table-striped
+  %tbody.main
+  
+.actions
+  .btn-group.pull-right
+    %a.btn.btn-info{:id=>"clear_data"}
+      %i.icon-trash
+      clear list

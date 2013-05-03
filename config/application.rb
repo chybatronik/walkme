@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module WalkMe#RailsPrelaunchSignup
+module WalkMe
   class Application < Rails::Application
 
     # don't generate RSpec tests for views and helpers

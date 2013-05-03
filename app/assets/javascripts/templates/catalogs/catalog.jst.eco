@@ -1,0 +1,7 @@
+<td class="span2">{{= name}}</td>
+<td class="pull-right">
+    <div class="btn-group">
+        <a class="btn btn-mini" href="#" id="edit"><i class="icon-pencil"></i></a>
+        <a class="btn btn-mini" href="#" id="delete"><i class="icon-remove"></i></a>
+    </div>
+</td>
