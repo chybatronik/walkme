@@ -16,14 +16,17 @@ class WalkMe.Routers.Tasks extends Backbone.Router
   index: ->
     console.log  "url index"  
     WalkMe.Models.user = new WalkMe.Models.User({id: 1})
+    WalkMe.Models.user.fetch({async:false})
 
     #for demo page
-    WalkMe.Models.user.set("token", "token")
-    WalkMe.Models.user.set("email", "email@email.demo")
-    WalkMe.Models.user.save()
+    #WalkMe.Models.user.set("token", "token")
+    #WalkMe.Models.user.set("email", "email@email.demo")
+    #WalkMe.Models.user.save()
 
     if WalkMe.Models.user.get("token")?
-      WalkMe.Collections.catalogs = new WalkMe.Collections.Catalogs()
+      WalkMe.Collections.catalogs = new WalkMe.Collections.Catalogs(
+        token: WalkMe.Models.user.get("token")
+        )
       WalkMe.Collections.catalogs.fetch({async:false})
       WalkMe.Collections.catalogs.create(
         "name":"name1"

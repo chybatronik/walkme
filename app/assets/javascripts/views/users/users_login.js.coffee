@@ -16,15 +16,15 @@ class WalkMe.Views.UsersLogin extends Backbone.View
       type : "POST"
       dataType: "json"
       data:
-        email:  $('input.email').val()
-        password: $('input.password').val()
+        email:  $('#demo-widget input.email').val()
+        password: $('#demo-widget input.password').val()
       success: @.save
     )
 
   save:(data, status, response)->
     @model.set({token : data.token, email : data.email})
     @model.save()
-    WalkMe.Routers.app.navigate('/app/demo/base', {trigger: true})
+    WalkMe.Routers.app.navigate('/app/demo', {trigger: true})
 
   render:()->
     $(@el).html(@template())

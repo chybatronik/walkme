@@ -1,9 +1,10 @@
 WalkMe::Application.routes.draw do
-  resources :tasks
-
 
   resources :catalogs
-
+  
+  resources :catalogs do
+    resources :tasks
+  end
 
   get "app/demo"
 
