@@ -70,31 +70,62 @@ describe "Tasks", ->
     collection = ""
 
     beforeEach ->
-      collection = new WalkMe.Collections.Tasks()
-      collection.create(
+      catalogs = new WalkMe.Collections.Catalogs()
+      catalogs.fetch({async:false})
+      catalogs.delete_all()
+      catalogs.create(
+        "name":"name_test"
+        )
+      catalogs.fetch({async:false})
+
+      collection = new WalkMe.Collections.Tasks(
+        "catalog_id":catalogs.at(0).get("id")
+        )
+
+      collection.delete_all()
+
+      cata = new WalkMe.Models.Task()
+      cata.set(
         "name": "name"
         "text": "text"
         )
-      collection.create(
+      cata.save()
+
+      cata = new WalkMe.Models.Task()
+      cata.set(
         "name": "name1"
         "text": "text1"
         )
-      collection.create(
+      cata.save()
+
+      cata = new WalkMe.Models.Task()
+      cata.set(
         "name": "name2"
         "text": "text2"
         )
+      cata.save()
+
+      collection.fetch({async:false})
 
       tasks_view = new WalkMe.Views.TasksCollection(collection:collection)
       tasks_view.render()
+
+    afterEach ->
+      collection.delete_all()
+      collection.fetch({async:false})
 
     it "length task", ->
       expect(tasks_view.$el.find(".inline").length).toBe(3)
 
     it "add model in collection",  ->
-      collection.create(
+      cata = new WalkMe.Models.Task()
+      cata.set(
         "name": "name3"
         "text": "text3"
         )
+      cata.save()
+
+      collection.fetch({async:false})
       expect(tasks_view.$el.find(".inline").length).toBe(3 + 1)
 
     it "refresh view change model",  ->
