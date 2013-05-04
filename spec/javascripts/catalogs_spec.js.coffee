@@ -18,6 +18,9 @@ describe "Catalog", ->
       catalogs.create({})
       after_length = catalogs.length
 
+    afterEach ->
+      catalogs.delete_all()
+
     it "init length right", ->
       expect(catalogs.length).toEqual(after_length)
 

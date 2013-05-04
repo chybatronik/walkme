@@ -3,10 +3,16 @@ class WalkMe.Views.Navigate extends Backbone.View
   template: _.template(JST['navigate']())
 
   events:
-  	"click td": "cli"
+    "click td.span6": "choose_catalog"
 
-  cli:->
-  	console.log "CLI"
+  choose_catalog:(e)->
+    console.log "choose_catalog", e.target.id 
+    WalkMe.Collections.tasks = new WalkMe.Collections.Tasks(
+      "catalog_id":e.target.id 
+      )
+    WalkMe.Collections.tasks.fetch({async:false})
+    tasks_view = new WalkMe.Views.TasksCollection(collection:WalkMe.Collections.tasks)
+    @.$el.find(".main").empty().append(tasks_view.render().el)
 
   initialize:->
     _.bindAll @, "render"

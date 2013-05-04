@@ -1,9 +1,10 @@
 <h1>Listing tasks</h1>
 
-<table>
+<table class="table table-bordered table-striped">
   <tr>
     <th>Name</th>
     <th>Text</th>
+    <th>catalog_id</th>
     <th>Url</th>
     <th>Object</th>
     <th></th>
@@ -15,6 +16,7 @@
   <tr>
     <td><%= task.name %></td>
     <td><%= task.text %></td>
+    <td><%= task.catalog_id %></td>
     <td><%= task.url %></td>
     <td><%= task.object %></td>
     <td><%= link_to 'Show', task %></td>

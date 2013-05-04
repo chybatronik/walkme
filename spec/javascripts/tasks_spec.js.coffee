@@ -17,6 +17,9 @@ describe "Tasks", ->
       list_task.create({})
       list_task.create({})
       after_length = list_task.length
+      
+    afterEach ->
+      list_task.delete_all()
 
     it "init length right", ->
       expect(list_task.length).toEqual(after_length)
