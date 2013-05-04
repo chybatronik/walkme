@@ -18,11 +18,6 @@ class WalkMe.Routers.Tasks extends Backbone.Router
     WalkMe.Models.user = new WalkMe.Models.User({id: 1})
     WalkMe.Models.user.fetch({async:false})
 
-    #for demo page
-    #WalkMe.Models.user.set("token", "token")
-    #WalkMe.Models.user.set("email", "email@email.demo")
-    #WalkMe.Models.user.save()
-
     if WalkMe.Models.user.get("token")?
       WalkMe.token = WalkMe.Models.user.get("token")
       WalkMe.Collections.catalogs = new WalkMe.Collections.Catalogs()
