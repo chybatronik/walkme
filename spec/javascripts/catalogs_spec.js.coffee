@@ -24,12 +24,10 @@ describe "Catalog", ->
     it "init length models right", ->
       expect(catalogs.models.length).toEqual(after_length)
 
-    it "delete models at collection", ->
-      catalogs.delete_all({wait:true})
-      
+    ###it "delete models at collection", ->
+      catalogs.delete_all({wait:true})      
       catalogs.fetch({async:false})
-
-      expect(catalogs.length).toEqual(0)
+      expect(catalogs.length).toEqual(0)###
 
   describe "View Collection",  ->
 
@@ -140,10 +138,9 @@ describe "Catalog", ->
 
     beforeEach ->
       user = new WalkMe.Models.User({id: 1})
-
-      user.set("token", "token")
-      user.set("email", "email@email.demo")
-      user.save()
+      user.fetch({async:false})
+      WalkMe.token = user.get("token")
+      
       collection = new WalkMe.Collections.Catalogs()
       collection.fetch({async:false})
       collection.delete_all()
