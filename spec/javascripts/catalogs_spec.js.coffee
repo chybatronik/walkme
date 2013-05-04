@@ -39,27 +39,44 @@ describe "Catalog", ->
 
     beforeEach ->
       collection = new WalkMe.Collections.Catalogs()
-      collection.create(
+      collection.fetch({async:false})
+      collection.delete_all()
+
+      cata = new WalkMe.Models.Catalog()
+      cata.set(
         "name": "name"
         )
-      collection.create(
+      cata.save()
+
+      cata = new WalkMe.Models.Catalog()
+      cata.set(
         "name": "name1"
         )
-      collection.create(
+      cata.save()
+
+      cata = new WalkMe.Models.Catalog()
+      cata.set(
         "name": "name2"
         )
+      cata.save()
 
+      collection.fetch({async:false})
       catalogs_collection_view = new WalkMe.Views.CatalogsCollection(collection:collection)
       catalogs_collection_view.render()
 
     it "length catalog", ->
-      console.log catalogs_collection_view.el
+      
       expect(catalogs_collection_view.$el.find(".inline").length).toBe(3)
 
     it "add model in collection",  ->
-      collection.create(
+      cata = new WalkMe.Models.Catalog()
+      cata.set(
         "name": "name3"
         )
+      cata.save()
+
+      collection.fetch({async:false})
+      console.log "collection", collection
       expect(catalogs_collection_view.$el.find(".inline").length).toBe(3 + 1)
 
     it "refresh view change model",  ->
@@ -70,18 +87,28 @@ describe "Catalog", ->
   describe "View", ->
     task_view = ""
     model = ""
+    collection = ""
 
     beforeEach ->
+      collection = new WalkMe.Collections.Catalogs()
+      collection.fetch({async:false})
+      collection.delete_all()
+
       model = new WalkMe.Models.Catalog()
       model.set("name", "name")
-      task_view = new WalkMe.Views.Catalog(model:model)
+      model.save()
+      collection.fetch({async:false})
+      task_view = new WalkMe.Views.Catalog(model:collection.at(0))
       task_view.render()
 
     it "render", ->
       expect(task_view.render().$el.find("td:first").text()).toMatch /name/
 
     it "change model", ->
+      model = collection.at(0)
       model.set("name", "qweqwe")
+      model.save()
+      collection.fetch({async:false})
       expect(task_view.$el.find("td:first").text()).toMatch /qweqwe/
 
   describe "View Navigate",  ->
@@ -98,12 +125,16 @@ describe "Catalog", ->
       collection = new WalkMe.Collections.Catalogs()
       collection.fetch({async:false})
       collection.delete_all()
-      collection.create(
-        "name": "name"
-        )
-      collection.create(
-        "name": "name1"
-        )
+
+      model = new WalkMe.Models.Catalog()
+      model.set("name", "name")
+      model.save()
+
+      model = new WalkMe.Models.Catalog()
+      model.set("name", "name1")
+      model.save()
+
+      collection.fetch({async:false})
 
       navig_view = new WalkMe.Views.Navigate(
         model:user
@@ -120,10 +151,10 @@ describe "Catalog", ->
       expect(navig_view.$el.find(".inline:eq(2)").length).toBe(0)
 
     it "render item after add", ->
-      temp_collection = new WalkMe.Collections.Catalogs()
-      temp_collection.create(
-        "name": "name2"
-        )
+      model = new WalkMe.Models.Catalog()
+      model.set("name", "name2")
+      model.save()
+
       collection.fetch({async:false})
 
       expect(navig_view.$el.find(".inline:eq(0) td:first").text()).toMatch /name/
@@ -147,12 +178,17 @@ describe "Catalog", ->
       collection = new WalkMe.Collections.Catalogs()
       collection.fetch({async:false})
       collection.delete_all()
-      collection.create(
-        "name": "name"
-        )
-      collection.create(
-        "name": "name1"
-        )
+
+      model = new WalkMe.Models.Catalog()
+      model.set("name", "name")
+      model.save()
+
+
+      model = new WalkMe.Models.Catalog()
+      model.set("name", "name1")
+      model.save()
+
+      collection.fetch({async:false})
       
       navig_view = new WalkMe.Views.Navigate(
         model:user

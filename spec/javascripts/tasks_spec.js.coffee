@@ -9,7 +9,18 @@ describe "Tasks", ->
     after_length = 0
 
     beforeEach ->
-      list_task = new WalkMe.Collections.Tasks()
+      catalogs = new WalkMe.Collections.Catalogs()
+      catalogs.fetch({async:false})
+      catalogs.delete_all()
+      catalogs.create(
+        "name":"name_test"
+        )
+      catalogs.fetch({async:false})
+
+      list_task = new WalkMe.Collections.Tasks(
+        "catalog_id":catalogs.at(0).get("id")
+        )
+
       list_task.fetch({async:false})
       before_length = list_task.length
       list_task.create({})
@@ -17,7 +28,7 @@ describe "Tasks", ->
       list_task.create({})
       list_task.create({})
       after_length = list_task.length
-      
+
     afterEach ->
       list_task.delete_all()
 

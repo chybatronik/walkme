@@ -23,6 +23,8 @@ class WalkMe.Views.CatalogsCollection extends Backbone.View
     @
 
   addOneCatalog:(model)->
+    model.fetch({async:false})
+    console.log "model.toJSON()", model.toJSON()
     catalog_vew = new WalkMe.Views.Catalog(model:model)
     @.$el.find(".main").append(catalog_vew.render().el)
 
