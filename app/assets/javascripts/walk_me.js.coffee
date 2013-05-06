@@ -4,6 +4,9 @@ window.WalkMe =
   Views: {}
   Routers: {}
   Actions: {}
+  current_catalog_id:null
+  current_catalog_id:null
+  token:null
   initialize: -> 
     WalkMe.Routers.app = new WalkMe.Routers.Tasks()
     Backbone.history.start pushState: true

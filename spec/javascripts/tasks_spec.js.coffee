@@ -17,9 +17,9 @@ describe "Tasks", ->
         )
       catalogs.fetch({async:false})
 
-      list_task = new WalkMe.Collections.Tasks(
-        "catalog_id":catalogs.at(0).get("id")
-        )
+      WalkMe.current_catalog_id = catalogs.at(0).get("id")
+
+      list_task = new WalkMe.Collections.Tasks()
 
       list_task.fetch({async:false})
       before_length = list_task.length
@@ -78,9 +78,10 @@ describe "Tasks", ->
         )
       catalogs.fetch({async:false})
 
-      collection = new WalkMe.Collections.Tasks(
-        "catalog_id":catalogs.at(0).get("id")
-        )
+      WalkMe.current_catalog_id = catalogs.at(0).get("id")
+
+      collection = new WalkMe.Collections.Tasks()
+      collection.fetch({async:false})
 
       collection.delete_all()
 
@@ -111,8 +112,9 @@ describe "Tasks", ->
       tasks_view.render()
 
     afterEach ->
-      collection.delete_all()
       collection.fetch({async:false})
+      collection.delete_all()
+      
 
     it "length task", ->
       expect(tasks_view.$el.find(".inline").length).toBe(3)
@@ -134,5 +136,7 @@ describe "Tasks", ->
       model.set("text", "111")
       expect(tasks_view.$el.find(".inline:eq(0) td:first").text()).toMatch /000/
       expect(tasks_view.$el.find(".inline:eq(0) td:eq(1)").text()).toMatch /111/
+
+
 
   
