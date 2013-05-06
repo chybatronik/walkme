@@ -1,6 +1,6 @@
 class WalkMe.Views.TasksCollection extends Backbone.View
 
-  template: JST['tasks/collection']
+  template: _.template(JST['tasks/collection']())
 
   events:
     "click #start": "start"
@@ -12,7 +12,9 @@ class WalkMe.Views.TasksCollection extends Backbone.View
     _.bindAll @
     @collection.on('reset', @render, this)
     @collection.on('add', @addOneTask, this)
-    @.$el.append(@template())
+    category = new WalkMe.Models.Catalog(id:WalkMe.current_catalog_id)
+    category.fetch({async:false})
+    @.$el.append(@template(category.toJSON()))
     
   start:(e)->
     console.log "start"

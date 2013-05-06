@@ -5,13 +5,6 @@ class CatalogsController < ApplicationController
   # GET /catalogs
   # GET /catalogs.json
   def index
-
-    p ""
-    p ""
-    p "", current_user
-    p ""
-    p ""
-    p ""
     @catalogs = current_user.catalogs.all
 
     respond_to do |format|

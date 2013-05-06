@@ -44,11 +44,6 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = current_user.catalogs.find(params[:catalog_id]).tasks.new(params[:task])
-    p ""
-    p ""
-    p "", params[:catalog_id]
-    p ""
-    p ""
     @task.catalog_id = params[:catalog_id]
 
     respond_to do |format|

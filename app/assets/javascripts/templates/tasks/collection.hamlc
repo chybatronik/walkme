@@ -1,9 +1,13 @@
 .actions
   .btn-group.pull-left
-    %a.btn.btn-info.start{:id=>"back"}
+    %a.btn.btn-link.start{:id=>"back"}
       %i.icon-arrow-left
-      back
-      
+      back  
+
+.pull-right
+  %h5
+    %i.icon-folder-open
+    {{= name}}   
 
 %table.table.table-bordered.table-striped
   %tbody.main
