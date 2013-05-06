@@ -1,8 +1,18 @@
 class CatalogsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /catalogs
   # GET /catalogs.json
   def index
-    @catalogs = Catalog.all
+
+    p ""
+    p ""
+    p "", current_user
+    p ""
+    p ""
+    p ""
+    @catalogs = current_user.catalogs.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +23,7 @@ class CatalogsController < ApplicationController
   # GET /catalogs/1
   # GET /catalogs/1.json
   def show
-    @catalog = Catalog.find(params[:id])
+    @catalog = current_user.catalogs.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +34,7 @@ class CatalogsController < ApplicationController
   # GET /catalogs/new
   # GET /catalogs/new.json
   def new
-    @catalog = Catalog.new
+    @catalog = current_user.catalogs.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +44,13 @@ class CatalogsController < ApplicationController
 
   # GET /catalogs/1/edit
   def edit
-    @catalog = Catalog.find(params[:id])
+    @catalog = current_user.catalogs.find(params[:id])
   end
 
   # POST /catalogs
   # POST /catalogs.json
   def create
-    @catalog = Catalog.new(params[:catalog])
+    @catalog = current_user.catalogs.new(params[:catalog])
 
     respond_to do |format|
       if @catalog.save
@@ -56,7 +66,7 @@ class CatalogsController < ApplicationController
   # PUT /catalogs/1
   # PUT /catalogs/1.json
   def update
-    @catalog = Catalog.find(params[:id])
+    @catalog = current_user.catalogs.find(params[:id])
 
     respond_to do |format|
       if @catalog.update_attributes(params[:catalog])
@@ -72,7 +82,7 @@ class CatalogsController < ApplicationController
   # DELETE /catalogs/1
   # DELETE /catalogs/1.json
   def destroy
-    @catalog = Catalog.find(params[:id])
+    @catalog = current_user.catalogs.find(params[:id])
     @catalog.destroy
 
     respond_to do |format|
