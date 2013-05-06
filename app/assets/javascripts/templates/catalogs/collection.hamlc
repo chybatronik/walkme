@@ -2,6 +2,12 @@
   %tbody.main
   
 .actions
+  .btn-group.pull-left
+    .input-append
+      %input.span8{:placeholder=>"Name category", :id=>"name"}
+      %button.btn.btn-info{:id=>"add"}
+        %i.icon-plus
+        add
   .btn-group.pull-right
     %a.btn.btn-info{:id=>"clear_data"}
       %i.icon-trash

@@ -5,7 +5,6 @@ window.WalkMe =
   Routers: {}
   Actions: {}
   current_catalog_id:null
-  current_catalog_id:null
   token:null
   initialize: -> 
     WalkMe.Routers.app = new WalkMe.Routers.Tasks()

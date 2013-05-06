@@ -40,6 +40,7 @@ class WalkMe.Views.TasksCollection extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
     #send_content_script("clear")
+    @collection.fetch({async:false})
     @collection.delete_all()
 
   render: ->

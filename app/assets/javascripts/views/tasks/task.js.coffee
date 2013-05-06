@@ -35,7 +35,8 @@ class WalkMe.Views.Task extends Backbone.View
     $(@el).html(@edit_task(@model.toJSON()))
     this
 
-  del:->
+  del:(e)->
+    e.preventDefault()
     @model.destroy()
 
   delete:->

@@ -4,6 +4,7 @@ class WalkMe.Views.CatalogsCollection extends Backbone.View
 
   events:
     "click #clear_data": "clear_data"
+    "click #add": "add"
 
   initialize: ->
     _.bindAll @
@@ -15,7 +16,17 @@ class WalkMe.Views.CatalogsCollection extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
     #send_content_script("clear")
+    @collection.fetch({async:false})
     @collection.delete_all()
+
+  add:(e)->
+    e.preventDefault()
+    name = @.$el.find("#name").val()
+    @.$el.find("#name").val("")
+    model = new WalkMe.Models.Catalog()
+    model.set("name", name)
+    model.save()
+    @collection.fetch({async:false})
 
   render: ->
     #@.$el.append(@template())
@@ -23,8 +34,6 @@ class WalkMe.Views.CatalogsCollection extends Backbone.View
     @
 
   addOneCatalog:(model)->
-    model.fetch({async:false})
-    console.log "model.toJSON()", model.toJSON()
     catalog_vew = new WalkMe.Views.Catalog(model:model)
     @.$el.find(".main").append(catalog_vew.render().el)
 

@@ -1,3 +1,10 @@
+.actions
+  .btn-group.pull-left
+    %a.btn.btn-info.start{:id=>"back"}
+      %i.icon-arrow-left
+      back
+      
+
 %table.table.table-bordered.table-striped
   %tbody.main
   

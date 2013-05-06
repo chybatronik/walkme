@@ -25,7 +25,9 @@
           Publish
     .tab-content
       .tab-pane.active{:id=>"workspace-panel"}
-        .main
+        .main_list_categor
+        .main_list_task.hide
+
       .tab-pane{:id=>"setting-panel"}
         %p 
           I'm in Section 2.
