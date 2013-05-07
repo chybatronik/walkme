@@ -5,9 +5,12 @@
       .row-fluid
         .example.span5
           = render 'app/example'
-        .span5.affix{:style=>"margin-left:550px;height: 660px;overflow: auto;", "data-spy"=>"scroll", "data-target"=>"#demo-widget", "data-offset"=>"0"}
-          %a.btn.btn-primary{:style=>"margin-left:220px;margin-top:-60px", :id=>"button_walkme"}
+        .span5.affix.offset5
+          %a.btn.btn-primary{:style=>"margin-left:220px;margin-top:-60px;", :id=>"button_walkme"}
             WalkMe
+          .demo-widget.bottom
+            .arrow
+        .span5.affix{:style=>"margin-left:550px;height: 660px;overflow: auto;", "data-spy"=>"scroll", "data-target"=>"#demo-widget", "data-offset"=>"0"}          
           .demo-widget.bottom
             .arrow
             #demo-widget.span12

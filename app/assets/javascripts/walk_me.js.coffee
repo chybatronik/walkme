@@ -23,8 +23,9 @@ $(document).ready ->
     if $(".demo-widget").is(":visible")
       $(".demo-widget").hide()
     else
-      WalkMe.Collections.tasks.fetch({async:false})
-      WalkMe.Actions.stop()
+      if WalkMe.Collections.tasks 
+        WalkMe.Collections.tasks.fetch({async:false})
+        WalkMe.Actions.stop()
       $("#button_walkme").text("WalkMe")
       $("#button_walkme").removeClass("btn-large")
       $(".demo-widget").show()
