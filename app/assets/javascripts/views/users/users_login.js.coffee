@@ -19,6 +19,9 @@ class WalkMe.Views.UsersLogin extends Backbone.View
         email:  $('#demo-widget input.email').val()
         password: $('#demo-widget input.password').val()
       success: @.save
+      error: ->
+        $(".alert.error_login").show()
+
     )
 
   save:(data, status, response)->

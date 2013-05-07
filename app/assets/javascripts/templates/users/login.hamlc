@@ -1,4 +1,8 @@
 %form
+  .alert.error_login.hide
+    %strong
+      Error!
+    Incorrect username-password pair! Login failed.
   .control-group.email.optional.user_email
     %label.email.optional.control-label
       Email
