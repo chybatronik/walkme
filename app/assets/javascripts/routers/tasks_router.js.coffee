@@ -7,6 +7,9 @@ class WalkMe.Routers.Tasks extends Backbone.Router
     console.log  "url login"   
     
     WalkMe.Models.user.fetch({async:false})
+    WalkMe.Models.user.set("token", "UEoJRPJV12xjvCxAvmP7")
+    WalkMe.Models.user.set("email", "user@example.com")
+    WalkMe.Models.user.save()
     if not WalkMe.Models.user.get("token")?
       login = new WalkMe.Views.UsersLogin(model:WalkMe.Models.user)
       $("#demo-widget").append(login.render().el)
