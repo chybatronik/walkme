@@ -5,6 +5,43 @@ class WalkMe.Views.Navigate extends Backbone.View
   events:
     "click td.span6": "choose_catalog"
     "click #back": "render"
+    "click #help": "help"
+    "click #logout": "logout"
+    "click #setting": "setting"
+
+  help:(e)->
+    e.preventDefault()
+    a = "#help"
+    console.log "HELP", $("#help[data-content]").length
+    if $("#help[data-content]").length == 0      
+      name = ""
+      text = """<ol>
+        <li><a>Link 1</a></li>
+        <li><a>Link 2</a></li>
+        <li><a>Link 3</a></li>
+        <li><a>Link 4</a></li>
+      </ol>
+      """
+      $(a).attr('data-original-title', name)
+      $(a).attr('data-placement', "bottom")
+      $(a).attr('data-content', text)
+      $(a).attr('data-html', "true")
+      $(a).popover('show')
+    else
+      $(a).removeAttr('data-content')
+      $(a).removeAttr('data-placement')
+      $(a).removeAttr('data-original-title')
+      $(".popover").remove()
+
+  logout:(e)->
+    e.preventDefault()
+    console.log "logout"
+    WalkMe.Models.user.destroy()
+    WalkMe.Routers.app.navigate('/app/demo/login', {trigger: true})
+
+  setting:(e)->
+    e.preventDefault()
+    console.log "setting"
 
   choose_catalog:(e)->
     console.log "choose_catalog", e.target.id 

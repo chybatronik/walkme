@@ -5,7 +5,7 @@
         %a.brand{:id=>'home'}
           Walkme
         .btn-group.pull-right
-          %a.btn.btn-link
+          %a.btn.btn-link{:id=>"setting"}
             {{= email }}
           %a.btn.btn-info{:href=>"#", :id=>"help"}
             help

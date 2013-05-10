@@ -6,7 +6,7 @@
 .actions
   .btn-group.pull-left
     .input-append
-      %form
+      %form{:style=>"margin-bottom:2px"}
         %input.span8{:placeholder=>"Name category", :id=>"name"}
         %button.btn.btn-info{:id=>"add", :type=>"submit"}
           %i.icon-plus
