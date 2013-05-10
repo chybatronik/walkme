@@ -12,6 +12,10 @@
 %table.table.table-bordered.table-striped
   %tbody.main
   
+.message_for_start.hide
+  %h4
+    Click "Start add" for a start
+
 .actions
   .btn-group.pull-left
     %a.btn.btn-info.start{:id=>"start"}

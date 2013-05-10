@@ -46,11 +46,19 @@ class WalkMe.Views.TasksCollection extends Backbone.View
     @collection.delete_all()
 
   render: ->
-    #@.$el.append(@template())
+    #@.$el.append(@template()) 
+    if @collection.length == 0
+      @.$el.find(".message_for_start").show()
+    else
+      @.$el.find(".message_for_start").hide()
     @collection.each(@addOneTask, @)   
     @
 
   addOneTask:(model)->
+    if @collection.length == 0
+      @.$el.find(".message_for_start").show()
+    else
+      @.$el.find(".message_for_start").hide()
     task_vew = new WalkMe.Views.Task(model:model)
     @.$el.find(".main").append(task_vew.render().el)
 
