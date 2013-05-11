@@ -8,6 +8,7 @@ class WalkMe.Views.Navigate extends Backbone.View
     "click #help": "help"
     "click #logout": "logout"
     "click #setting": "setting"
+    "click #publish": "publish"
 
   help:(e)->
     e.preventDefault()
@@ -43,6 +44,10 @@ class WalkMe.Views.Navigate extends Backbone.View
     e.preventDefault()
     console.log "setting"
 
+  publish:(e)->
+    e.preventDefault()
+    console.log "publish"
+    
   choose_catalog:(e)->
     console.log "choose_catalog", e.target.id 
     WalkMe.current_catalog_id = e.target.id

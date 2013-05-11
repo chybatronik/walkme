@@ -1,5 +1,6 @@
 WalkMe::Application.routes.draw do
 
+  resources :publications
   resources :catalogs
   resources :tasks
   

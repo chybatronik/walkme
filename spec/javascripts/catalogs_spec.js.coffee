@@ -118,10 +118,15 @@ describe "Catalog", ->
 
     beforeEach ->
       user = new WalkMe.Models.User({id: 1})
-
-      user.set("token", "token")
-      user.set("email", "email@email.demo")
+      user.fetch({async:false})
+      console.log "USER", user
+      user.set("email", "user@example.com")
+      user.set("password", "changeme")
       user.save()
+      user.generate_token()
+
+      WalkMe.token = user.get("token")
+
       collection = new WalkMe.Collections.Catalogs()
       collection.fetch({async:false})
       collection.delete_all()
@@ -173,6 +178,12 @@ describe "Catalog", ->
     beforeEach ->
       user = new WalkMe.Models.User({id: 1})
       user.fetch({async:false})
+      console.log "USER", user
+      user.set("email", "user@example.com")
+      user.set("password", "changeme")
+      user.save()
+      user.generate_token()
+
       WalkMe.token = user.get("token")
       
       collection = new WalkMe.Collections.Catalogs()

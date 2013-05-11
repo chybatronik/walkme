@@ -32,5 +32,4 @@
         %p 
           I'm in Section 2.
       .tab-pane{:id=>"publish-panel"}
-        %p 
-          I'm in Section 3.
+        .publish_list
