@@ -125,6 +125,8 @@ describe "Catalog", ->
       user.save()
       user.generate_token()
 
+      user.fetch({async:false})
+
       WalkMe.token = user.get("token")
 
       collection = new WalkMe.Collections.Catalogs()
@@ -183,6 +185,7 @@ describe "Catalog", ->
       user.set("password", "changeme")
       user.save()
       user.generate_token()
+      user.fetch({async:false})
 
       WalkMe.token = user.get("token")
       
