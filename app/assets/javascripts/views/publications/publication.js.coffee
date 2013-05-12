@@ -4,6 +4,9 @@ class WalkMe.Views.Publication extends Backbone.View
   tagName :"tr"
   className:"inline"
 
+  events:
+    "click .add_public": "add_public"
+
   initialize:->
     _.bindAll @
     @model.on("change", @render, @)
@@ -11,7 +14,18 @@ class WalkMe.Views.Publication extends Backbone.View
 
   delete:->
     @.remove()
+  
+  add_public:(e)->
+    e.preventDefault()
+    console.log 
+    catalog = new WalkMe.Models.Catalog(id:@model.get("catalog_id"))
+    catalog.fetch({async:false})
     
+    catalogs = new WalkMe.Collections.Catalogs()
+    catalogs.fetch({async:false})
+
+    catalogs.add(catalog)
+
   render: ->
     name_catalog = new WalkMe.Models.Catalog(id:@model.get("catalog_id"))
     name_catalog.fetch({async:false})

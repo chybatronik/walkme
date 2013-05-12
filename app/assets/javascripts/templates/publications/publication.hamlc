@@ -4,6 +4,6 @@
 	{{= catalog_id}}
 %td.pull-right
 	.btn-group
-		%a.btn.btn-mini
-			%i.icon-pencil
+		%a.btn.btn-mini.add_public
+			%i.icon-ok
 			add

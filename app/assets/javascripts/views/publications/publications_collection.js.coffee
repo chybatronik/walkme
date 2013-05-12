@@ -8,17 +8,13 @@ class WalkMe.Views.PublicationsCollection extends Backbone.View
     @collection.on('add', @addOnePublication, this)
     @.$el.append(@template())
 
-    @user = new WalkMe.Models.User({id: 1})
-    @user.fetch({async:false})
-
-
   render: ->
     @collection.each(@addOnePublication, @)   
     @
 
   addOnePublication:(model)->
-    console.log "PPP", model.get("user_id"), @user.get("user_id")
-    if model.get("user_id") != @user.get("user_id") 
+    console.log "PPP", model.get("user_id"), WalkMe.Models.user.get("user_id")
+    if model.get("user_id") != WalkMe.Models.user.get("user_id") 
       pub_vew = new WalkMe.Views.Publication(model:model)
       @.$el.find(".main").append(pub_vew.render().el)
 
