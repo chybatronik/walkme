@@ -1,0 +1,4 @@
+%h5 
+  List of publications
+%table.table.table-bordered.table-striped
+  %tbody.main

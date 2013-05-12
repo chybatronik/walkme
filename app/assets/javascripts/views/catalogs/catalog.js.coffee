@@ -10,6 +10,7 @@ class WalkMe.Views.Catalog extends Backbone.View
     "click #save": "save"
     "click #cancel": "cancel"
     "click #delete": "del"
+    "click #public": "publication"
 
   initialize:->
     _.bindAll @
@@ -20,6 +21,10 @@ class WalkMe.Views.Catalog extends Backbone.View
     e.preventDefault()
     $(@el).html(@template(@model.toJSON()))
     this
+
+  publication:(e)->
+    e.preventDefault()
+    @model.make_public()
 
   save:(e)->
     e.preventDefault()

@@ -1,6 +1,7 @@
 <td class="span6 btn btn-link" id="{{= id}}"><i class="icon-folder-close"></i>{{= name}}</td>
 <td class="pull-right">
     <div class="btn-group">
+        <a class="btn btn-mini" href="#" id="public"><i class="icon-share"></i></a>
         <a class="btn btn-mini" href="#" id="edit"><i class="icon-pencil"></i></a>
         <a class="btn btn-mini" href="#" id="delete"><i class="icon-remove"></i></a>
     </div>

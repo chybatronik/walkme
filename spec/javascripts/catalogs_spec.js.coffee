@@ -1,5 +1,18 @@
 # use require to load any .js file available to the asset pipeline
 
+login = =>
+  user = new WalkMe.Models.User({id: 1})
+  user.fetch({async:false})
+  console.log "USER", user
+  user.set("email", "user@example.com")
+  user.set("password", "changeme")
+  user.save()
+  user.generate_token()
+
+  user.fetch({async:false})
+
+  WalkMe.token = user.get("token")
+
 describe "Catalog", ->
 
   describe "Collections", ->
@@ -9,6 +22,8 @@ describe "Catalog", ->
     after_length = null
 
     beforeEach ->
+      login()
+      
       catalogs = new WalkMe.Collections.Catalogs()
       catalogs.fetch({async:false})
       before_length = catalogs.length
@@ -38,6 +53,8 @@ describe "Catalog", ->
     collection = ""
 
     beforeEach ->
+      login()
+
       collection = new WalkMe.Collections.Catalogs()
       collection.fetch({async:false})
       collection.delete_all()
@@ -90,6 +107,8 @@ describe "Catalog", ->
     collection = ""
 
     beforeEach ->
+      login()
+
       collection = new WalkMe.Collections.Catalogs()
       collection.fetch({async:false})
       collection.delete_all()
@@ -117,17 +136,10 @@ describe "Catalog", ->
     collection = null
 
     beforeEach ->
+      login()
+
       user = new WalkMe.Models.User({id: 1})
       user.fetch({async:false})
-      console.log "USER", user
-      user.set("email", "user@example.com")
-      user.set("password", "changeme")
-      user.save()
-      user.generate_token()
-
-      user.fetch({async:false})
-
-      WalkMe.token = user.get("token")
 
       collection = new WalkMe.Collections.Catalogs()
       collection.fetch({async:false})
@@ -178,16 +190,10 @@ describe "Catalog", ->
     collection = null
 
     beforeEach ->
+      login()
+
       user = new WalkMe.Models.User({id: 1})
       user.fetch({async:false})
-      console.log "USER", user
-      user.set("email", "user@example.com")
-      user.set("password", "changeme")
-      user.save()
-      user.generate_token()
-      user.fetch({async:false})
-
-      WalkMe.token = user.get("token")
       
       collection = new WalkMe.Collections.Catalogs()
       collection.fetch({async:false})

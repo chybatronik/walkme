@@ -1,0 +1,9 @@
+%td.span1
+	{{= user_id}}
+%td.span4
+	{{= catalog_id}}
+%td.pull-right
+	.btn-group
+		%a.btn.btn-mini
+			%i.icon-pencil
+			add

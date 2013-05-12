@@ -11,7 +11,7 @@ class WalkMe.Routers.Tasks extends Backbone.Router
     #WalkMe.Models.user.save()
     if not WalkMe.Models.user.get("token")?
       login = new WalkMe.Views.UsersLogin(model:WalkMe.Models.user)
-      $("#demo-widget").append(login.render().el)
+      $("#demo-widget").empty().append(login.render().el)
     else
       WalkMe.Routers.app.navigate('/app/demo', {trigger: true})
 

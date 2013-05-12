@@ -16,7 +16,7 @@ class CatalogsController < ApplicationController
   # GET /catalogs/1
   # GET /catalogs/1.json
   def show
-    @catalog = current_user.catalogs.find(params[:id])
+    @catalog = Catalog.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -25,7 +25,7 @@ class WalkMe.Views.UsersLogin extends Backbone.View
     )
 
   save:(data, status, response)->
-    @model.set({token : data.token, email : data.email})
+    @model.set({token : data.token, email : data.email, user_id : data.user_id})
     @model.save()
     WalkMe.Routers.app.navigate('/app/demo', {trigger: true})
 

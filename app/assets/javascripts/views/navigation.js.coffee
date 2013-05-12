@@ -47,7 +47,11 @@ class WalkMe.Views.Navigate extends Backbone.View
   publish:(e)->
     e.preventDefault()
     console.log "publish"
-    
+    WalkMe.Collections.pub = new WalkMe.Collections.Publications( )
+    WalkMe.Collections.pub.fetch({async:false})
+    pub_view = new WalkMe.Views.PublicationsCollection(collection:WalkMe.Collections.pub)
+    @.$el.find(".publish_list").empty().append(pub_view.render().el)
+
   choose_catalog:(e)->
     console.log "choose_catalog", e.target.id 
     WalkMe.current_catalog_id = e.target.id
