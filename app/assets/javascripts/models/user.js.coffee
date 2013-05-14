@@ -16,7 +16,7 @@ class WalkMe.Models.User extends Backbone.Model
       )
 
   save_data:(data, status, response)->
-    user = new WalkMe.Models.User({id: 1})
+    user = WalkMe.Models.user
     #console.log "{token : data.token, email : data.email}", {token : data.token, email : data.email}
     user.set({token : data.token, email : data.email, user_id : data.user_id})
     user.set("password", "")

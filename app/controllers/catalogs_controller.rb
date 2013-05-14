@@ -5,7 +5,16 @@ class CatalogsController < ApplicationController
   # GET /catalogs
   # GET /catalogs.json
   def index
-    @catalogs = current_user.catalogs.where(:url=>params[:url])
+    @user=User.find_by_authentication_token(params[:auth_token])
+    p ""
+    p ""
+    p ""
+    p "catalogs", @user.id
+    p ""
+    p ""
+    p ""
+    p ""
+    @catalogs = @user.catalogs.where(:url=>params[:url])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +36,8 @@ class CatalogsController < ApplicationController
   # GET /catalogs/new
   # GET /catalogs/new.json
   def new
-    @catalog = current_user.catalogs.new
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @catalog = @user.catalogs.new
     @catalog.url = params[:url]
 
     respond_to do |format|
@@ -44,7 +54,8 @@ class CatalogsController < ApplicationController
   # POST /catalogs
   # POST /catalogs.json
   def create
-    @catalog = current_user.catalogs.new(params[:catalog])
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @catalog = @user.catalogs.new(params[:catalog])
     @catalog.url = params[:url]
 
     respond_to do |format|

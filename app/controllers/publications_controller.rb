@@ -1,11 +1,18 @@
 class PublicationsController < ApplicationController
 
-  before_filter :authenticate_user!
-  
   # GET /publications
   # GET /publications.json
   def index
-    @publications = Publication.all
+    p ""
+    p ""
+    p ""
+    p "publication", current_user.id
+    p ""
+    p ""
+    p ""
+    p ""
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @publications = Publication.where(:url=>params[:url]).where("user_id != ?", @user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,6 +35,7 @@ class PublicationsController < ApplicationController
   # GET /publications/new.json
   def new
     @publication = Publication.new
+    @publication.url = params[:url]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,6 +52,7 @@ class PublicationsController < ApplicationController
   # POST /publications.json
   def create
     @publication = Publication.new(params[:publication])
+    @publication.url = params[:url]
 
     respond_to do |format|
       if @publication.save
