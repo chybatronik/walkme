@@ -6,14 +6,6 @@ class CatalogsController < ApplicationController
   # GET /catalogs.json
   def index
     @user=User.find_by_authentication_token(params[:auth_token])
-    p ""
-    p ""
-    p ""
-    p "catalogs", @user.id
-    p ""
-    p ""
-    p ""
-    p ""
     @catalogs = @user.catalogs.where(:url=>params[:url])
 
     respond_to do |format|

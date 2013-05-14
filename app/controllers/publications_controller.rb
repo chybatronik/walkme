@@ -1,16 +1,8 @@
 class PublicationsController < ApplicationController
-
+  before_filter :authenticate_user!
   # GET /publications
   # GET /publications.json
   def index
-    p ""
-    p ""
-    p ""
-    p "publication", current_user.id
-    p ""
-    p ""
-    p ""
-    p ""
     @user=User.find_by_authentication_token(params[:auth_token])
     @publications = Publication.where(:url=>params[:url]).where("user_id != ?", @user.id)
 
