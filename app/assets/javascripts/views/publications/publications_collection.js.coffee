@@ -13,9 +13,9 @@ class WalkMe.Views.PublicationsCollection extends Backbone.View
     @
 
   addOnePublication:(model)->
-    console.log "PPP", model.get("user_id"), WalkMe.Models.user.get("user_id")
-    if model.get("user_id") != WalkMe.Models.user.get("user_id") 
-      pub_vew = new WalkMe.Views.Publication(model:model)
-      @.$el.find(".main").append(pub_vew.render().el)
+    #console.log "PPP", model.get("user_id"), WalkMe.Models.user.get("user_id")
+    #if model.get("user_id") != WalkMe.Models.user.get("user_id") 
+    pub_vew = new WalkMe.Views.Publication(model:model)
+    @.$el.find(".main").append(pub_vew.render().el)
 
     

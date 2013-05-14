@@ -10,6 +10,7 @@ login = =>
   user.fetch({async:false})
 
   WalkMe.token = user.get("token")
+  WalkMe.Models.user = user
 
 describe "Publish", ->
 
@@ -82,6 +83,8 @@ describe "Publish", ->
       
       catalogs = new WalkMe.Collections.Catalogs()
       catalogs.fetch({async:false})
+
+      console.log "catalogs", catalogs
 
       catalogs.at(0).make_public()
       publ.fetch({async:false})

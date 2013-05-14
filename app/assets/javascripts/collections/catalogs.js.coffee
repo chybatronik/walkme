@@ -1,6 +1,6 @@
 class WalkMe.Collections.Catalogs extends Backbone.Collection
   url: ->
-    x = "/catalogs.json?auth_token=#{WalkMe.token}"
+    x = "/catalogs.json?auth_token=#{WalkMe.token}&url=#{document.location.href}"
     x
   #localStorage: new Backbone.LocalStorage("App_Collections_Catalogs")  
   model: WalkMe.Models.Catalog

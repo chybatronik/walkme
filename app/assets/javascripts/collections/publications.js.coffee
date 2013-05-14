@@ -1,6 +1,6 @@
 class WalkMe.Collections.Publications extends Backbone.Collection
   url: ->
-    x = "/publications.json?auth_token=#{WalkMe.token}"
+    x = "/publications.json?auth_token=#{WalkMe.token}&url=#{document.location.href}"
     x
 
   model: WalkMe.Models.Publication

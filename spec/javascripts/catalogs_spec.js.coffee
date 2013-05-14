@@ -3,7 +3,7 @@
 login = =>
   user = new WalkMe.Models.User({id: 1})
   user.fetch({async:false})
-  console.log "USER", user
+  
   user.set("email", "user@example.com")
   user.set("password", "changeme")
   user.save()
@@ -12,6 +12,7 @@ login = =>
   user.fetch({async:false})
 
   WalkMe.token = user.get("token")
+  console.log "USER", user
 
 describe "Catalog", ->
 

@@ -2,9 +2,9 @@ class WalkMe.Models.Catalog extends Backbone.Model
 
   url: ->
     if @id
-      x = "/catalogs/#{@.id}.json?auth_token=#{WalkMe.token}"
+      x = "/catalogs/#{@.id}.json?auth_token=#{WalkMe.token}&url=#{document.location.href}"
     else
-      x = "/catalogs.json?auth_token=#{WalkMe.token}"
+      x = "/catalogs.json?auth_token=#{WalkMe.token}&url=#{document.location.href}"
     x
 
   make_public:->
