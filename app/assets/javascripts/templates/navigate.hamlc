@@ -18,18 +18,16 @@
         %a{:href=>"#workspace-panel", "data-toggle"=>"tab", :id=>"workspace"}
           WorkSpace
       %li
-        %a{:href=>"#setting-panel", "data-toggle"=>"tab", :id=>"setting"}
-          Setting
-      %li
         %a{:href=>"#publish-panel", "data-toggle"=>"tab", :id=>"publish"}
           Published
+      %li
+        %a{:href=>"#setting-panel", "data-toggle"=>"tab", :id=>"setting"}
+          Setting
     .tab-content
       .tab-pane.active{:id=>"workspace-panel"}
         .main_list_categor
         .main_list_task.hide
-
-      .tab-pane{:id=>"setting-panel"}
-        %p 
-          I'm in Section 2.
       .tab-pane{:id=>"publish-panel"}
         .publish_list
+      .tab-pane{:id=>"setting-panel"}
+        .setting_list

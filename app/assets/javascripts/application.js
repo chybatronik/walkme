@@ -18,6 +18,7 @@
 //= require jquery.readyselector
 //= require jquery.externalscript
 //= require jquery.slimscroll.min
+//= require colorpicker.min
 //= require hamlcoffee
 //= require underscore
 //= require backbone

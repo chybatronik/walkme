@@ -1,0 +1,6 @@
+%form.form-horizontal
+  .control-group
+    %label.control-label{:from=>"input1"}
+      Label 1
+    .controls
+      %input.span5{:type=>"text"}

@@ -43,6 +43,8 @@ class WalkMe.Views.Navigate extends Backbone.View
   setting:(e)->
     e.preventDefault()
     console.log "setting"
+    setting_view = new WalkMe.Views.Setting(model:WalkMe.Models.user)
+    @.$el.find(".setting_list").empty().append(setting_view.render().el)
 
   publish:(e)->
     e.preventDefault()
