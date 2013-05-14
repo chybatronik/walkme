@@ -10,4 +10,5 @@ class WalkMe.Views.Setting extends Backbone.View
 
   render: ->
     @.$el.empty().append(@template(@model.toJSON()))
+    @.$el.find('.color').colorpicker()
     @

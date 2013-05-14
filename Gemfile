@@ -10,6 +10,8 @@ group :assets do
   gem 'haml_coffee_assets'
   #gem "chardinjs-rails"
   gem "introjs-rails"
+  gem 'bootstrap-colorpicker-rails', :require => 'bootstrap-colorpicker-rails',
+                          :git => 'git://github.com/alessani/bootstrap-colorpicker-rails.git'
 end
 
 gem 'sqlite3'

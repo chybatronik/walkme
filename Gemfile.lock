@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/alessani/bootstrap-colorpicker-rails.git
+  revision: 979e94022dcaa80c8b538baa9a792e6a23a8702a
+  specs:
+    bootstrap-colorpicker-rails (0.3)
+      railties (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -252,6 +259,7 @@ DEPENDENCIES
   backbone-on-rails
   better_errors (>= 0.6.0)
   binding_of_caller (>= 0.7.1)
+  bootstrap-colorpicker-rails!
   bootstrap-sass (>= 2.3.0.0)
   cancan (>= 1.6.8)
   capybara (>= 2.0.2)

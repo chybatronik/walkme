@@ -1,6 +1,50 @@
 %form.form-horizontal
   .control-group
     %label.control-label{:from=>"input1"}
-      Label 1
+      Ballon Color
     .controls
-      %input.span5{:type=>"text"}
+      .input-append.color{"data-color"=>"rgb(255, 146, 180)",  "data-color-format"=>"hex"}
+        %input.span4{:type=>"text", :id=>"ballon_button"}
+        %span.add-on
+          %i{:style=>"background-color: rgb(255, 146, 180)"}
+
+  .control-group
+    %label.control-label{:from=>"input1"}
+      Header Color
+    .controls
+      .input-append.color{"data-color"=>"rgb(255, 146, 180)",  "data-color-format"=>"hex"}
+        %input.span4{:type=>"text", :id=>"header"}
+        %span.add-on
+          %i{:style=>"background-color: rgb(255, 146, 180)"}
+
+  .control-group
+    %label.control-label{:from=>"input1"}
+      Content Color
+    .controls
+      .input-append.color{"data-color"=>"rgb(255, 146, 180)",  "data-color-format"=>"hex"}
+        %input.span4{:type=>"text", :id=>"content"}
+        %span.add-on
+          %i{:style=>"background-color: rgb(255, 146, 180)"}
+
+  .control-group
+    %label.control-label{:from=>"input1"}
+      Button Color
+    .controls
+      .input-append.color{"data-color"=>"rgb(255, 146, 180)",  "data-color-format"=>"hex"}
+        %input.span4{:type=>"text", :id=>"button"}
+        %span.add-on
+          %i{:style=>"background-color: rgb(255, 146, 180)"}
+
+  .control-group
+    %label.control-label{:from=>"input1"}
+      Button Text Color
+    .controls
+      .input-append.color{"data-color"=>"rgb(255, 146, 180)",  "data-color-format"=>"hex"}
+        %input.span4{:type=>"text", :id=>"button_text"}
+        %span.add-on
+          %i{:style=>"background-color: rgb(255, 146, 180)"}
+          
+  .control-group
+    .controls
+      %button.btn
+        Save
