@@ -5,7 +5,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = current_user.catalogs.find(params[:catalog_id]).tasks.all
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @tasks = @user.catalogs.find(params[:catalog_id]).tasks.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +17,8 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @task = current_user.catalogs.find(params[:catalog_id]).tasks.find(params[:id])
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @task = @user.catalogs.find(params[:catalog_id]).tasks.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +29,8 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.json
   def new
-    @task = current_user.catalogs.find(params[:catalog_id]).tasks.new
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @task = @user.catalogs.find(params[:catalog_id]).tasks.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,7 +40,8 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @task = current_user.catalogs.find(params[:catalog_id]).tasks.find(params[:id])
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @task = @user.catalogs.find(params[:catalog_id]).tasks.find(params[:id])
   end
 
   # POST /tasks
@@ -65,7 +69,8 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update
-    @task = current_user.catalogs.find(params[:catalog_id]).tasks.find(params[:id])
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @task = @user.catalogs.find(params[:catalog_id]).tasks.find(params[:id])
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
@@ -81,7 +86,8 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task = current_user.catalogs.find(params[:catalog_id]).tasks.find(params[:id])
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @task = @user.catalogs.find(params[:catalog_id]).tasks.find(params[:id])
     @task.destroy
 
     respond_to do |format|
