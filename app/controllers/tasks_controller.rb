@@ -6,7 +6,11 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @user=User.find_by_authentication_token(params[:auth_token])
-    @tasks = @user.catalogs.find(params[:catalog_id]).tasks.all
+    if not @user
+      render :status=>404, :json=>{:message=>'Invalid user.'}
+      return 
+    end
+    @tasks = Catalog.find(params[:catalog_id]).tasks.all
 
     respond_to do |format|
       format.html # index.html.erb
