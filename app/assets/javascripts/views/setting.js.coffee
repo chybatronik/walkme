@@ -19,8 +19,8 @@ class WalkMe.Views.Setting extends Backbone.View
 
   defaults:(e)->
     e.preventDefault()
-    console.log "@model.default", @model.default
-    @model.set(@model.default)
+    console.log "@model.defaults", @model.defaults
+    @model.set(@model.defaults)
     @model.save()
     @.render()
     console.log "@model", @model

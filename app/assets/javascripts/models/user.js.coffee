@@ -1,7 +1,7 @@
 class WalkMe.Models.User extends Backbone.Model
   localStorage: new Backbone.LocalStorage("App_Model_User")  
 
-  default:
+  defaults:
     ballon:"#FFFFFF"
     header:"#FFFFFF"
     content:"#FFFFFF"

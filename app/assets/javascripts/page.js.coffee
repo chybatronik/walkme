@@ -5,6 +5,25 @@
   count_task = 0
   is_show_modal = false
 
+  load_style_popup_wiget = =>
+    styleNode = document.createElement('style')
+    styleNode.type = "text/css"
+    user = WalkMe.Models.user
+    user.fetch({async:false})
+    text = ".introjs-tooltip { background-color: #{user.get("ballon")}; }"
+    text += ".introjs-tooltiptext { background-color: #{user.get("header")}; }"
+    text += ".introjs-tooltiptext { background-color: #{user.get("content")}; }"
+    #text += ".introjs-button { background-color: #{user.get("button")}; }"
+    text += ".introjs-button { background-image: -webkit-gradient(linear,0 0,0 100%,from(#f4f4f4),to(#{user.get("button")})); }"
+    text += ".introjs-button { color: #{user.get("button_text")}; }"
+
+    if styleNode.styleSheet
+      styleNode.styleSheet.cssText = text
+    else 
+      styleNode.innerText = text
+    
+    (document.head||document.documentElement).appendChild(styleNode);
+
   load_one_style = (name_file)=>
     elem = document.getElementById(name_file)
     if not elem
@@ -143,6 +162,8 @@
     $("body").off("click",  click )
     removes()
     #load_one_script("lib/intro/intro.min.js")
+    load_style_popup_wiget()
+
     load_one_style("lib/intro/introjs-ie.min.css")
     load_one_style("lib/intro/introjs.min.css")
     $(".popover").remove();
