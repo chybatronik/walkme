@@ -1,6 +1,13 @@
 class WalkMe.Models.User extends Backbone.Model
   localStorage: new Backbone.LocalStorage("App_Model_User")  
 
+  default:
+    ballon:"#FFFFFF"
+    header:"#FFFFFF"
+    content:"#FFFFFF"
+    button:"#ececec"
+    button_text:"#333"
+
   generate_token:->
     if @get("email") and @get("password")
       $.ajax(

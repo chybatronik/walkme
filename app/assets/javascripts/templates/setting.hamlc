@@ -1,50 +1,52 @@
 %form.form-horizontal
   .control-group
     %label.control-label{:from=>"input1"}
-      Ballon Color
+      Ballon Color .introjs-tooltip
     .controls
-      .input-append.color{"data-color"=>"rgb(255, 146, 180)",  "data-color-format"=>"hex"}
-        %input.span4{:type=>"text", :id=>"ballon_button"}
+      .input-append.color{"data-color"=>"hex({{= ballon}})",  "data-color-format"=>"hex"}
+        %input.span6{:type=>"text", :id=>"ballon", :value=>"{{= ballon}}"}
         %span.add-on
-          %i{:style=>"background-color: rgb(255, 146, 180)"}
+          %i{:style=>"background-color: hex({{= ballon}})"}
 
   .control-group
     %label.control-label{:from=>"input1"}
-      Header Color
+      Header Color .introjs-tooltiptext
     .controls
-      .input-append.color{"data-color"=>"rgb(255, 146, 180)",  "data-color-format"=>"hex"}
-        %input.span4{:type=>"text", :id=>"header"}
+      .input-append.color{"data-color"=>"hex({{= header}})",  "data-color-format"=>"hex"}
+        %input.span6{:type=>"text", :id=>"header", :value=>"{{= header}}"}
         %span.add-on
-          %i{:style=>"background-color: rgb(255, 146, 180)"}
+          %i{:style=>"background-color: hex({{= header}})"}
 
   .control-group
     %label.control-label{:from=>"input1"}
-      Content Color
+      Content Color .introjs-tooltiptext
     .controls
-      .input-append.color{"data-color"=>"rgb(255, 146, 180)",  "data-color-format"=>"hex"}
-        %input.span4{:type=>"text", :id=>"content"}
+      .input-append.color{"data-color"=>"hex({{= content}})",  "data-color-format"=>"hex"}
+        %input.span6{:type=>"text", :id=>"content", :value=>"{{= content}}"}
         %span.add-on
-          %i{:style=>"background-color: rgb(255, 146, 180)"}
+          %i{:style=>"background-color: hex({{= content}})"}
 
   .control-group
     %label.control-label{:from=>"input1"}
-      Button Color
+      Button Color .introjs-button
     .controls
-      .input-append.color{"data-color"=>"rgb(255, 146, 180)",  "data-color-format"=>"hex"}
-        %input.span4{:type=>"text", :id=>"button"}
+      .input-append.color{"data-color"=>"hex({{= button}})",  "data-color-format"=>"hex"}
+        %input.span6{:type=>"text", :id=>"button", :value=>"{{= button}}"}
         %span.add-on
-          %i{:style=>"background-color: rgb(255, 146, 180)"}
+          %i{:style=>"background-color: hex({{= button}})"}
 
   .control-group
     %label.control-label{:from=>"input1"}
-      Button Text Color
+      Button Text Color .introjs-button
     .controls
-      .input-append.color{"data-color"=>"rgb(255, 146, 180)",  "data-color-format"=>"hex"}
-        %input.span4{:type=>"text", :id=>"button_text"}
+      .input-append.color{"data-color"=>"hex({{= button_text}})",  "data-color-format"=>"hex"}
+        %input.span6{:type=>"text", :id=>"button_text", :value=>"{{= button_text}}"}
         %span.add-on
-          %i{:style=>"background-color: rgb(255, 146, 180)"}
+          %i{:style=>"background-color: hex({{= button_text}})"}
           
   .control-group
     .controls
-      %button.btn
+      %button.btn.btn-info{:id=>"save"}
         Save
+      %button.btn{:id=>"defaults"}
+        Defaults
