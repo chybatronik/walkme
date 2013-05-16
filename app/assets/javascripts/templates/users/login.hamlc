@@ -7,7 +7,7 @@
     %label.email.optional.control-label
       Email
     .controls
-      %input.string.email.optional{:name=>"user[email]", :size=>"50", :type=>"email", :value=>"user@example.com"}
+      %input.string.email.optional{:name=>"user[email]", :size=>"50", :type=>"email", :value=>"demo@example.com"}
   .control-group.password.optional.user_password
     %label.password.optional.control-label
       Password

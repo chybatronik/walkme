@@ -12,6 +12,5 @@
           %i.icon-plus
           add
   .btn-group.pull-right
-    %a.btn.btn-info{:id=>"clear_data"}
+    %a.btn.btn-info{:id=>"clear_data", "data-toggle"=>"tooltip", "title"=>"clear list"}
       %i.icon-trash
-      clear list

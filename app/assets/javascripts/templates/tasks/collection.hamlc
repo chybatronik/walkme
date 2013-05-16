@@ -29,6 +29,5 @@
     %a.btn.btn-info{:id=>"play"}
       %i.icon-play
       review
-    %a.btn.btn-info{:id=>"clear_data"}
+    %a.btn.btn-info{:id=>"clear_data", "data-toggle"=>"tooltip", "title"=>"clear list"}
       %i.icon-trash
-      clear list

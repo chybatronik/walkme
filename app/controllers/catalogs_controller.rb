@@ -64,7 +64,8 @@ class CatalogsController < ApplicationController
   # PUT /catalogs/1
   # PUT /catalogs/1.json
   def update
-    @catalog = current_user.catalogs.find(params[:id])
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @catalog = @user.catalogs.find(params[:id])
 
     respond_to do |format|
       if @catalog.update_attributes(params[:catalog])
@@ -80,7 +81,8 @@ class CatalogsController < ApplicationController
   # DELETE /catalogs/1
   # DELETE /catalogs/1.json
   def destroy
-    @catalog = current_user.catalogs.find(params[:id])
+    @user=User.find_by_authentication_token(params[:auth_token])
+    @catalog = @user.catalogs.find(params[:id])
     @catalog.destroy
 
     respond_to do |format|

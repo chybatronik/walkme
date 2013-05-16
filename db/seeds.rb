@@ -17,11 +17,19 @@ user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => EN
 puts 'user: ' << user.name
 user.add_role :admin
 user.confirm!
+
 user2 = User.find_or_create_by_email :name => 'Silver User', :email => 'user2@example.com', :password => 'changeme', :password_confirmation => 'changeme'
 user2.add_role :silver
 user2.confirm!
+
 user3 = User.find_or_create_by_email :name => 'Gold User', :email => 'user3@example.com', :password => 'changeme', :password_confirmation => 'changeme'
 user3.add_role :gold
+
 user4 = User.find_or_create_by_email :name => 'Platinum User', :email => 'user4@example.com', :password => 'changeme', :password_confirmation => 'changeme'
 user4.add_role :platinum
-puts "users: #{user2.name}, #{user3.name}, #{user4.name}"
+
+demo = User.find_or_create_by_email :name => 'demo User', :email => 'demo@example.com', :password => 'changeme', :password_confirmation => 'changeme'
+demo.add_role :silver
+demo.confirm!
+
+puts "users: #{user2.name}, #{user3.name}, #{user4.name}, , #{demo.name}"

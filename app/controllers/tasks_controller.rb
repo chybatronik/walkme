@@ -43,7 +43,12 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = current_user.catalogs.find(params[:catalog_id]).tasks.new(params[:task])
+    @user=User.find_by_authentication_token(params[:auth_token])
+    if not @user
+      render :status=>404, :json=>{:message=>'Invalid user.'}
+      return 
+    end
+    @task = Catalog.find(params[:catalog_id]).tasks.new(params[:task])
     @task.catalog_id = params[:catalog_id]
 
     respond_to do |format|
