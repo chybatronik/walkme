@@ -27,7 +27,7 @@
       """
 
     $('body').append(help_bot_html)
-    
+
     class Chardin
       constructor: () ->
         $("*").removeAttr("data-intro")
@@ -71,7 +71,7 @@
           text = "We can see Demo"
           help.add("a[href='/app/demo']", text)
 
-          $(window).scrollTop($("a[href='/features']").position().top)
+          $(window).scrollTop($("body").position().top)
           help.start()
         when "demo2"
           click_link = true
