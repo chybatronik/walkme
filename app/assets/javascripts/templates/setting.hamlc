@@ -1,7 +1,7 @@
 %form.form-horizontal
   .control-group
     %label.control-label{:from=>"input1"}
-      Ballon Color .introjs-tooltip
+      Ballon Color
     .controls
       .input-append.color{"data-color"=>"hex({{= ballon}})",  "data-color-format"=>"hex"}
         %input.span6{:type=>"text", :id=>"ballon", :value=>"{{= ballon}}"}
@@ -10,7 +10,7 @@
 
   .control-group
     %label.control-label{:from=>"input1"}
-      Header Color .introjs-tooltiptext
+      Header Color
     .controls
       .input-append.color{"data-color"=>"hex({{= header}})",  "data-color-format"=>"hex"}
         %input.span6{:type=>"text", :id=>"header", :value=>"{{= header}}"}
@@ -19,7 +19,7 @@
 
   .control-group
     %label.control-label{:from=>"input1"}
-      Content Color .introjs-tooltiptext
+      Content Color
     .controls
       .input-append.color{"data-color"=>"hex({{= content}})",  "data-color-format"=>"hex"}
         %input.span6{:type=>"text", :id=>"content", :value=>"{{= content}}"}
@@ -28,7 +28,7 @@
 
   .control-group
     %label.control-label{:from=>"input1"}
-      Button Color .introjs-button
+      Button Color
     .controls
       .input-append.color{"data-color"=>"hex({{= button}})",  "data-color-format"=>"hex"}
         %input.span6{:type=>"text", :id=>"button", :value=>"{{= button}}"}
@@ -37,7 +37,7 @@
 
   .control-group
     %label.control-label{:from=>"input1"}
-      Button Text Color .introjs-button
+      Button Text Color
     .controls
       .input-append.color{"data-color"=>"hex({{= button_text}})",  "data-color-format"=>"hex"}
         %input.span6{:type=>"text", :id=>"button_text", :value=>"{{= button_text}}"}
